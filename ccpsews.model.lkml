@@ -90,3 +90,10 @@ explore: employee {
 
   }
 }
+
+explore: cohort_rates
+{
+  label: "Cohort"
+  description: "Use this for cohort information"
+
+}
