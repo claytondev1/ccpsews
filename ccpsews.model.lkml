@@ -91,9 +91,8 @@ explore: employee {
   }
 }
 
-explore: cohort_rates
+explore: sample_rates
 {
-  label: "Cohort"
-  description: "Use this for cohort information"
-
+  label: "Sample"
+  description: "Use this for Sample Rates"
 }
