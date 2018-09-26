@@ -95,3 +95,8 @@ explore: cohort_rate {
   label: "cohort"
   description: "Use this for cohort information"
 }
+
+explore: sample_rates{
+  label: "sample"
+  description: "Use this for sample information"
+}
