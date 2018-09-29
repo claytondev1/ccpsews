@@ -95,3 +95,9 @@ explore: cohort_rate {
   label: "cohort"
   description: "Use this for cohort information"
 }
+
+explore : escls_sz_totalsby_schoolby_grades {
+  label: "No of Roster in elementry by grade"
+  description: "Use this for roster is 18 or more"
+  sql_table_name: escls_sz_totalsby_schoolby_grades ;;
+}
