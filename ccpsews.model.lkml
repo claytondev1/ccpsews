@@ -90,8 +90,18 @@ explore: employee {
 
   }
 }
+
 explore: cohort_rate {
   label: "cohort"
   description: "Use this for cohort information"
+}
 
+explore: sample_rates{
+  label: "sample"
+  description: "Use this for sample information"
+}
+
+explore: elementary_class_size_total {
+  label: "es class size"
+  description: " Elementary Class Size Total"
 }
