@@ -18,8 +18,6 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 
-
-
 explore: behavior_detail {
   label: "Behavior"
   description: "Use this for behavior information"
@@ -96,12 +94,7 @@ explore: cohort_rate {
   description: "Use this for cohort information"
 }
 
-explore: sample_rates{
-  label: "sample"
-  description: "Use this for sample information"
-}
-
-explore: elementary_class_size_total {
-  label: "es class size"
-  description: " Elementary Class Size Total"
+explore : elementary_class_size_total {
+  label: "No of Roster in elementry by grade"
+  description: "Use this for roster is 18 or more"
 }
