@@ -98,3 +98,8 @@ explore : elementary_class_size_total {
   label: "No of Roster in elementry by grade"
   description: "Use this for roster is 18 or more"
 }
+
+explore: esstud_countper_rosterby_teacher {
+  label: "Elementary Student Count Per Roster By teacher"
+  description: "Use this for Roster By Teacher"
+}
