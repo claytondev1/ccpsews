@@ -113,3 +113,8 @@ explore: high_school_class_size_totalby_schoolby_grade {
   label: "High School Class Size Total"
   description: "Use this for High School Class Size Total"
 }
+
+explore: mid_school_student_countper_rosterby_teacher {
+  label: "Middle School Student Count Roster By Teacher"
+  description: "Use this for Student Count by Roster"
+}
