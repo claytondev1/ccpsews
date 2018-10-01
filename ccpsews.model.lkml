@@ -116,7 +116,7 @@ explore: mid_school_student_countper_rosterby_teacher {
 }
 
 
-explore: rosters_by_elementary  {
+explore: sumofrosterbygradesinelementary {
   label: "Rosters By Grades in Elementary "
   description: "Use this for roster in elementary"
 
