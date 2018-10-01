@@ -103,3 +103,8 @@ explore: esstud_countper_rosterby_teacher {
   label: "Elementary Student Count Per Roster By teacher"
   description: "Use this for Roster By Teacher"
 }
+
+explore: mid_school_class_size_totalsby_schoolby_grade {
+  label: "Middle School Class Size Total By School"
+  description: "Use this for Middle School Class Size"
+}

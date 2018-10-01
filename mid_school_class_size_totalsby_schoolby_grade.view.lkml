@@ -1,24 +1,24 @@
 view: mid_school_class_size_totalsby_schoolby_grade {
   sql_table_name: dbo.MidSchoolClassSizeTotalsbySchoolbyGrade ;;
 
-  dimension: _of_rosters {
-    type: number
-    sql: ${TABLE}."# of Rosters" ;;
-  }
-
-  dimension: %_of_rosters {
-    type: number
-    sql: ${TABLE}."% of Rosters" ;;
-  }
-
-  dimension: _std_enrolled {
-    type: string
-    sql: ${TABLE}."# Std_Enrolled" ;;
-  }
-
   dimension: grade_level {
     type: string
     sql: ${TABLE}."Grade Level" ;;
+  }
+
+  dimension: no_of_rosters {
+    type: number
+    sql: ${TABLE}."NoOf Rosters" ;;
+  }
+
+  dimension: no_std_enrolled {
+    type: string
+    sql: ${TABLE}.NoStdEnrolled ;;
+  }
+
+  dimension: percentof_rosters {
+    type: number
+    sql: ${TABLE}.PercentofRosters ;;
   }
 
   dimension: school {
