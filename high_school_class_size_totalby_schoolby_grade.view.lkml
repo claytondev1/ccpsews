@@ -1,17 +1,17 @@
 view: high_school_class_size_totalby_schoolby_grade {
   sql_table_name: dbo.HighSchoolClassSizeTotalbySchoolbyGrade ;;
 
-  dimension: _of_rosters {
+  dimension: number_of_rosters {
     type: number
     sql: ${TABLE}."# of Rosters" ;;
   }
 
-  dimension: %_of_rosters {
+  dimension: percentage_of_rosters {
     type: number
     sql: ${TABLE}."% of Rosters" ;;
   }
 
-  dimension: _std_enrolled {
+  dimension: number_std_enrolled {
     type: string
     sql: ${TABLE}."# Std_Enrolled" ;;
   }

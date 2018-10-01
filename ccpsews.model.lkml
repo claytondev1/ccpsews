@@ -108,3 +108,8 @@ explore: mid_school_class_size_totalsby_schoolby_grade {
   label: "Middle School Class Size Total By School"
   description: "Use this for Middle School Class Size"
 }
+
+explore: high_school_class_size_totalby_schoolby_grade {
+  label: "High School Class Size Total"
+  description: "Use this for High School Class Size Total"
+}
