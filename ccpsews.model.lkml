@@ -114,3 +114,10 @@ explore: mid_school_student_countper_rosterby_teacher {
   label: "Middle School Student Count Roster By Teacher"
   description: "Use this for Student Count by Roster"
 }
+
+
+explore: rosters_by_elementary  {
+  label: "Rosters By Grades in Elementary "
+  description: "Use this for roster in elementary"
+
+}
