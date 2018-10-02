@@ -126,4 +126,4 @@ explore: msct {
   label: "Sample Summary"
   description: "Use Sample"
 
-  }
+}
