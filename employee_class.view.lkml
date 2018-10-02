@@ -1,6 +1,11 @@
 view: employee_class {
   sql_table_name: dbo.EmployeeClass ;;
-
+dimension:  pk {
+  type: string
+  primary_key: yes
+  hidden: yes
+  sql: ${emp}+${class} + cast(${class_start_date} as varchar(255));;
+}
   dimension: class {
     type: string
     sql: ${TABLE}.Class ;;
