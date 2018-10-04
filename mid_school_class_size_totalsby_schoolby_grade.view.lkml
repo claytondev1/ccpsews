@@ -8,29 +8,29 @@ view: mid_school_class_size_totalsby_schoolby_grade {
 
   dimension: no_of_rosters {
     type: number
-    sql: ${TABLE}."NoOf Rosters" ;;
+    sql: ${TABLE}."NoofRosters" ;;
   }
 
-  dimension: no_std_enrolled {
-    type: string
+  dimension: rosters {
+    type: number
     sql: ${TABLE}.NoStdEnrolled ;;
   }
 
-  dimension: percentof_rosters {
-    type: number
-    sql: ${TABLE}.PercentofRosters ;;
-  }
 
   dimension: school {
     type: string
     sql: ${TABLE}.School ;;
   }
 
+  dimension: std_enrolled {
+    type: number
+    sql: ${TABLE}.Std_Enrolled ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
   }
-
 
   measure: sum_of_rosters {
     type:  sum
