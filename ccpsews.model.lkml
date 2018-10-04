@@ -131,3 +131,9 @@ explore: rosters_by_elementary
   description: "Use this for roster in elementary ( class size) "
 
 }
+
+explore: total_employees_by_race {
+  from: employee
+  label: " Total Employees By Race"
+  description: "Use this for Total Employees By Race"
+  }
