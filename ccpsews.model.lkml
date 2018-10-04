@@ -123,6 +123,11 @@ explore: rosters_by_middle
   description: "Use this for roster in Middle ( class size) "
  }
 
+explore: rosters_by_high
+{
+  label: "Roster by High School"
+  description: "Use this for roster in High ( class size) "
+}
 
 explore: worker {
   from: employee
