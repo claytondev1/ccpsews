@@ -132,13 +132,13 @@ explore: rosters_by_elementary
 
 }
 
-explore: total_employees_by_race {
+explore: worker {
   from: employee
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
   join: employee_class {
     type: left_outer
-    sql_on: ${total_employees_by_race.emp} = ${employee_class.emp};;
+    sql_on: ${worker.emp} = ${employee_class.emp};;
     relationship: many_to_one
   }
 }
