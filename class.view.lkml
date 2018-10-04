@@ -13,6 +13,7 @@ view: class {
 
   dimension: class_code {
     type: string
+    primary_key: yes
     sql: ${TABLE}.classCode ;;
   }
 
@@ -48,7 +49,8 @@ view: class {
 
   dimension: hourly_flag {
     type: string
-    sql: ${TABLE}.hourlyFlag ;;
+    sql: ${TABLE}.hourlyFlag  ;;
+
   }
 
   dimension: part_time_vs_full_time {

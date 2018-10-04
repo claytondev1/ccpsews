@@ -130,8 +130,10 @@ view: employee {
   }
 
   measure: count {
-    hidden: yes
-    type: count
+   # hidden: yes
+
+    type: count_distinct
+    sql: ${emp} ;;
     drill_fields: [lname, fname, mname]
   }
 
