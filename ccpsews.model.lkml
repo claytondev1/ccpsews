@@ -110,12 +110,6 @@ explore: esstud_countper_rosterby_teacher {
   description: "Use this for Roster By Teacher"
 }
 
-
-explore: high_school_class_size_totalby_schoolby_grade {
-  label: "High School Class Size Total"
-  description: "Use this for High School Class Size Total"
-}
-
 explore: rosters_by_elementary
 {
   label: "Roster by Elementary"
