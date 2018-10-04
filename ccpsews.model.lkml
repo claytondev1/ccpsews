@@ -123,6 +123,13 @@ explore: rosters_by_elementary
 
 }
 
+explore: rosters_by_middle
+{
+  label: "Roster by Middle School"
+  description: "Use this for roster in Middle ( class size) "
+ }
+
+
 explore: worker {
   from: employee
   label: " Total Employees By Race"
