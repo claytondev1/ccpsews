@@ -121,9 +121,3 @@ explore: rosters_by_elementary
   description: "Use this for roster in elementary ( class size) "
 
 }
-
-explore: msct {
-  label: "Sample Summary"
-  description: "Use Sample"
-
-}
