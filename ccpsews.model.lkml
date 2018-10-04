@@ -132,8 +132,13 @@ explore: rosters_by_elementary
 
 }
 
-explore: msct {
-  label: "Sample Summary"
-  description: "Use Sample"
-
+explore: worker {
+  from: employee
+  label: " Total Employees By Race"
+  description: "Use this for Total Employees By Race"
+  join: employee_class {
+    type: left_outer
+    sql_on: ${worker.emp} = ${employee_class.emp};;
+    relationship: many_to_one
+  }
 }
