@@ -136,5 +136,11 @@ explore: total_employees_by_race {
   from: employee
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
-
+  join: employee_class {
+    type: left_outer
+    sql_on: ${employee_class.emp} = ${employee_class.emp};;
+    relationship: many_to_one
+  }
 }
+
+
