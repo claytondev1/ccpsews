@@ -30,4 +30,9 @@ view: rosters_by_middle {
     type: count
     drill_fields: []
   }
+
+  measure: sum_of_rosters {
+    type: sum
+    sql: ${noof_rosters} ;;
+  }
 }
