@@ -136,4 +136,5 @@ explore: total_employees_by_race {
   from: employee
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
-  }
+
+}
