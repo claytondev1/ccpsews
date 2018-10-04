@@ -30,4 +30,10 @@ view: mid_school_class_size_totalsby_schoolby_grade {
     type: count
     drill_fields: []
   }
+
+
+  measure: sum_of_rosters {
+    type:  sum
+    sql: ${no_of_rosters} ;;
+  }
 }
