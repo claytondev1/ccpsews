@@ -144,7 +144,8 @@ explore: enrollment {
   from: enrollment
   label: "DES High School Student Totals"
   description: "Use this to see the total of DES students in each High Schools"
-  join: calendar {
+
+    join: calendar {
     type: left_outer
     sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
     relationship: one_to_one
@@ -164,4 +165,5 @@ explore: enrollment {
     sql_on: ${school_year.end_year} = ${calendar.end_year};;
     relationship:  one_to_one
     }
-}
+
+  }
