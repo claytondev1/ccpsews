@@ -153,9 +153,6 @@ AND (enrollment.specialEdStatus = 'Y')
 AND ((enrollment.spedExitDate IS NULL) OR (enrollment.spedExitDate IS NULL OR LEN(enrollment.spedExitDate ) = 0 ))
 AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (calendar.name LIKE '%High%');;
 
-   sql_always_having:Max ${start_date} >= '07/16/2018'
-    ;;
-
     join: calendar {
     type: left_outer
     sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
