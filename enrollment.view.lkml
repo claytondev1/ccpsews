@@ -502,7 +502,8 @@ view: enrollment {
     sql: start_date
     From enrollment enr2
     Where enr2.person_ID = person_ID
-    And enr2.end_year = end_year)
+    And enr2.end_year = end_year
+    and enr2.start_date >= '07/16/2018')
     type: max date
     ;;
  }
