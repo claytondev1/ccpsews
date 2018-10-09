@@ -141,6 +141,7 @@ explore: worker {
 }
 
 explore: enrollment {
+  from: enrollment
   label: "DES High School Student Totals"
   description: "Use this to see the total of DES students in each High Schools"
 
