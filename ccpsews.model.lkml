@@ -146,12 +146,12 @@ explore: enrollment {
   description: "Use this to see the total of DES students in each High Schools"
 
 
- always_filter: {
-    filters: {
-      field: active
-      value: "True"
-    }
-  }
+ #always_filter: {
+  #  filters: {
+   #   field: active
+    #  value: "True"
+    #}
+  #}
    sql_always_where:(enrollment.active = 'true')
 AND ((enrollment.endDate IS NULL) OR (enrollment.endDate IS NULL OR LEN(enrollment.endDate ) = 0 ))
 AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enrollment.endStatus ) = 0 ))
