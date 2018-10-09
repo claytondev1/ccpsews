@@ -154,9 +154,7 @@ AND ((enrollment.spedExitDate IS NULL) OR (enrollment.spedExitDate IS NULL OR LE
 AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (calendar.name LIKE '%High%');;
 
    sql_always_having:Max (start_date
-    From enrollment enr2
-    Where enr2.person_ID = person_ID
-    And enr2.end_year = end_year)
+    Where enrollment.endYear = schoolyear.endyear)
     ;;
 
     join: calendar {
