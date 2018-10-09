@@ -145,6 +145,17 @@ explore: enrollment {
   label: "DES High School Student Totals"
   description: "Use this to see the total of DES students in each High Schools"
 
+  always_filter: {
+    filters: {
+      field: active
+      value: "True"
+    }
+  }
+   sql_always_where:${end_date} is 'null'  and ${end_status} is 'null'
+  ${no_show} is 'false' and ${sped_exit_date} is 'null' and
+  ${state_exclude} is 'false' and ${special_ed_status} is 'Y';;
+
+
     join: calendar {
     type: left_outer
     sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
