@@ -138,3 +138,10 @@ explore: total_employees_by_race {
   description: "Use this for Total Employees By Race"
 
 }
+
+explore: enrollment {
+  label: "DES High School Student Totals"
+  description: "Use this to see the total of DES students in each High Schools"
+
+
+}
