@@ -151,9 +151,9 @@ explore: enrollment {
       value: "True"
     }
   }
-   sql_always_where:(${end_date} is null)  and (${end_status} is null) and
-  (${no_show} is 'no') and (${sped_exit_date} is null) and
-  (${state_exclude} is 'no') and (${special_ed_status} is 'Y');;
+   sql_always_where:(${end_date} is null),  and (${end_status} is null), and
+  (${no_show} is 'false'), and (${sped_exit_date} is null), and
+  (${state_exclude} is 'false'), and (${special_ed_status} is 'Y');;
 
 
     join: calendar {
