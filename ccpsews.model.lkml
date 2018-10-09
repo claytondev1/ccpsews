@@ -152,9 +152,13 @@ explore: enrollment {
       value: "True"
     }
   }
-   sql_always_where:(${end_date} is null)  and (${end_status} is null) and
-  (${no_show} is false) and (${sped_exit_date} is null) and
-  (${state_exclude} is false) and (${special_ed_status} is 'Y');;
+   sql_always_where:(enrollment.active = 'true')
+AND ((enrollment.endDate IS NULL) OR (enrollment.endDate IS NULL OR LEN(enrollment.endDate ) = 0 ))
+AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enrollment.endStatus ) = 0 ))
+AND (((enrollment.noShow IS NULL OR LEN(enrollment.noShow ) = 0 ) OR enrollment.noShow = 'false'))
+AND (enrollment.specialEdStatus = 'Y')
+AND ((enrollment.spedExitDate IS NULL) OR (enrollment.spedExitDate IS NULL OR LEN(enrollment.spedExitDate ) = 0 ))
+;;
 
     join: calendar {
     type: left_outer
