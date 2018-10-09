@@ -503,7 +503,7 @@ view: enrollment {
     From enrollment enr2
     Where enr2.person_ID = person_ID
     And enr2.end_year = end_year)
-    type: max
+    type: max date
     ;;
  }
 }
