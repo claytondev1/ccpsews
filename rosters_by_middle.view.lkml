@@ -1,5 +1,10 @@
-view: rosters_by_elementary {
-  sql_table_name: dbo.RostersByElementary ;;
+view: rosters_by_middle {
+  sql_table_name: dbo.RostersByMiddle ;;
+
+  dimension: _rosters {
+    type: number
+    sql: ${TABLE}."% Rosters" ;;
+  }
 
   dimension: grade_level {
     type: string
@@ -9,11 +14,6 @@ view: rosters_by_elementary {
   dimension: noof_rosters {
     type: number
     sql: ${TABLE}.NoofRosters ;;
-  }
-
-  dimension: rosters {
-    type: number
-    sql: ${TABLE}."%Rosters" ;;
   }
 
   dimension: school {
@@ -35,5 +35,4 @@ view: rosters_by_elementary {
     type: sum
     sql: ${noof_rosters} ;;
   }
-
 }

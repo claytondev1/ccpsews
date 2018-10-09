@@ -110,21 +110,6 @@ explore: esstud_countper_rosterby_teacher {
   description: "Use this for Roster By Teacher"
 }
 
-explore: mid_school_class_size_totalsby_schoolby_grade {
-  label: "Middle School Class Size Total By School"
-  description: "Use this for Middle School Class Size"
-}
-
-explore: high_school_class_size_totalby_schoolby_grade {
-  label: "High School Class Size Total"
-  description: "Use this for High School Class Size Total"
-}
-
-explore: mid_school_student_countper_rosterby_teacher {
-  label: "Middle School Student Count Roster By Teacher"
-  description: "Use this for Student Count by Roster"
-}
-
 explore: rosters_by_elementary
 {
   label: "Roster by Elementary"
@@ -132,11 +117,27 @@ explore: rosters_by_elementary
 
 }
 
-explore: total_employees_by_race {
+explore: rosters_by_middle
+{
+  label: "Roster by Middle School"
+  description: "Use this for roster in Middle ( class size) "
+ }
+
+explore: rosters_by_high
+{
+  label: "Roster by High School"
+  description: "Use this for roster in High ( class size) "
+}
+
+explore: worker {
   from: employee
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
-
+  join: employee_class {
+    type: left_outer
+    sql_on: ${worker.emp} = ${employee_class.emp};;
+    relationship: many_to_one
+  }
 }
 
 explore: enrollment {
