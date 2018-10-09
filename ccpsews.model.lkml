@@ -151,8 +151,7 @@ AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enro
 AND (((enrollment.noShow IS NULL OR LEN(enrollment.noShow ) = 0 ) OR enrollment.noShow = 'false'))
 AND (enrollment.specialEdStatus = 'Y')
 AND ((enrollment.spedExitDate IS NULL) OR (enrollment.spedExitDate IS NULL OR LEN(enrollment.spedExitDate ) = 0 ))
-AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (calendar.name LIKE '%High%')
-AND (MAX(enrollment.startDate) >= '07/16/2018');;
+AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (calendar.name LIKE '%High%');;
 
     join: calendar {
     type: left_outer
