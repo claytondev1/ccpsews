@@ -144,6 +144,24 @@ explore: enrollment {
   from: enrollment
   label: "DES High School Student Totals"
   description: "Use this to see the total of DES students in each High Schools"
-
-
+  join: calendar {
+    type: left_outer
+    sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
+    relationship: one_to_one
+  }
+  join: person {
+    type: left_outer
+    sql_on: ${person.person_id} = ${enrollment.person_id} } ;;
+    relationship: one_to_one
+  }
+  join: school {
+    type:  left_outer
+    sql_on: ${school.school_id} = ${calendar.school_id};;
+    relationship: one_to_one
+  }
+  join: school_year {
+    type: left_outer
+    sql_on: ${school_year.end_year} = ${calendar.end_year};;
+    relationship:  one_to_one
+    }
 }
