@@ -497,14 +497,4 @@ view: enrollment {
     type: count
     drill_fields: [roll_forward_enrollment_id, enrollment.roll_forward_enrollment_id, enrollment.count]
   }
-
- measure:enr_start_date {
-    sql: start_date
-    From enrollment enr2
-    Where enr2.person_ID = person_ID
-    And enr2.end_year = end_year
-    and enr2.start_date >= '07/16/2018')
-    type: max date
-    ;;
- }
 }
