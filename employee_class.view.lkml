@@ -41,6 +41,16 @@ dimension:  pk {
     sql: ${TABLE}.Loc ;;
   }
 
+  dimension: pay_cert_Type{
+    type: string
+    sql:  ${TABLE}."Pay Cert Type" ;;
+  }
+
+  dimension: pay_cert_lvl {
+    type: string
+    sql: ${TABLE}."Pay Cert Lvl" ;;
+  }
+
   dimension: pay_step {
     type: string
     sql: ${TABLE}."Pay Step" ;;
