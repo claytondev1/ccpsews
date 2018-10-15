@@ -110,7 +110,7 @@ explore: esstud_countper_rosterby_teacher {
   description: "Use this for Roster By Teacher"
 }
 
-explore: rosters_by_elementary
+explore: rosters_by_elementary_static
 {
   label: "Roster by Elementary"
   description: "Use this for roster in elementary ( class size) "

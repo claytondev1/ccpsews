@@ -1,4 +1,4 @@
-view: rosters_by_elementary {
+view: rosters_by_elementary_static {
   sql_table_name: dbo.RostersByElementary ;;
 
   dimension: grade_level {
