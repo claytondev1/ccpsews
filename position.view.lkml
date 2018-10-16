@@ -65,4 +65,11 @@ view: position {
     type: count
     drill_fields: []
   }
+
+  measure: unique_position {
+    type: count_distinct
+    sql: ${position_nbr} ;;
+    value_format_name: decimal_0
+
+  }
 }
