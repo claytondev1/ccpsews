@@ -188,5 +188,5 @@ explore: position {
 }
 explore: vacant_positions {
   from: vacant_positions
-  label: "vacant_position"
+  label: "vacant position"
 }
