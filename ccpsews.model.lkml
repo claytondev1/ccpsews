@@ -179,10 +179,14 @@ AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (ca
 explore: position {
 
   from: position
-  label: "Use for active position"
+  label: "active position"
   join: employee_class {
       sql_on: ${position.position_nbr} = ${employee_class.position} ;;
       relationship: one_to_one
 
   }
+}
+explore: vacant_positions {
+  from: vacant_positions
+  label: "vacant_position"
 }
