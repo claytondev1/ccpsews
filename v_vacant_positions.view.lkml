@@ -1,4 +1,4 @@
-view: v_vacant_positions {
+view: vacant_positions {
   sql_table_name: dbo.vVacantPositions ;;
 
   dimension: class {
