@@ -21,6 +21,11 @@ view: vacant_positions {
     sql: ${TABLE}.positionNbr ;;
   }
 
+  dimension: site {
+    type: number
+    sql: ${TABLE}.site ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
