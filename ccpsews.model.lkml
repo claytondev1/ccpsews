@@ -158,6 +158,13 @@ AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (ca
     sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
     relationship: one_to_one
   }
+
+  join: individual {
+    type: left_outer
+    sql_on:  = ${enrollment.person_id} = ${individual.person_id} ;;
+    relationship: many_to_one
+  }
+
   join: person {
     type: left_outer
     sql_on: ${person.person_id} = ${enrollment.person_id} } ;;
