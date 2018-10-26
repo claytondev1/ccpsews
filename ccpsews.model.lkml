@@ -18,6 +18,12 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 
+###
+datagroup: cachingpolicy {
+  max_cache_age: "4 hours"
+  sql_trigger: select getdate() ;;
+}
+
 explore: behavior_detail {
   label: "Behavior"
   description: "Use this for behavior information"
