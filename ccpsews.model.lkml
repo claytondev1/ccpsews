@@ -197,3 +197,49 @@ explore: vacant_positions {
   from: vacant_positions
   label: "vacant position"
 }
+
+
+########################################
+# Explores for Dr. Tappler's Analyisis #
+########################################
+
+# explore: student_achievement {
+#   from: district_addresses
+#
+#   join: actdata {
+#     type: left_outer
+#     sql_on:  ;;
+#   }
+# }
+
+explore: actdata {
+  label: "Student Achievement"
+  from: actdata
+#   always_filter: {
+#     filters: {
+#       field: student_achievement.test_cmpnt_typ_cd
+#       value: "English"
+#     }
+#     filters: {
+#       field: satdata.test_cmpnt_typ_cd
+#       value: "Reading Test Score - New"
+#     }
+#   }
+
+
+  join: satdata {
+#     view_label: "Student Achievement"
+    type: inner
+    sql_on: ${actdata.instn_number} = ${satdata.instn_number}
+
+
+      ;;
+    relationship: many_to_many
+  }
+}
+
+explore: satdata {}
+
+explore: actdata_2 {
+  from: actdata
+}
