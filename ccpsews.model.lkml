@@ -18,6 +18,12 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 
+###
+datagroup: cachingpolicy {
+  max_cache_age: "4 hours"
+  sql_trigger: select getdate() ;;
+}
+
 explore: behavior_detail {
   label: "Behavior"
   description: "Use this for behavior information"
@@ -142,32 +148,32 @@ explore: worker {
 
 explore: enrollment {
   from: enrollment
-  label: "DES High School Student Totals"
-  description: "Use this to see the total of DES students in each High Schools"
-
+  label: "Enrollment"
+  description: "Use this to see enrollment for current year"
+ always_join: [calendar]
    sql_always_where:(enrollment.active = 'true')
 AND ((enrollment.endDate IS NULL) OR (enrollment.endDate IS NULL OR LEN(enrollment.endDate ) = 0 ))
 AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enrollment.endStatus ) = 0 ))
 AND (((enrollment.noShow IS NULL OR LEN(enrollment.noShow ) = 0 ) OR enrollment.noShow = 'false'))
-AND (enrollment.specialEdStatus = 'Y')
-AND ((enrollment.spedExitDate IS NULL) OR (enrollment.spedExitDate IS NULL OR LEN(enrollment.spedExitDate ) = 0 ))
-AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (calendar.name LIKE '%High%');;
+AND (enrollment.stateExclude = 'false')
+
+AND calendar.endyear = 2019 ;;
 
     join: calendar {
     type: left_outer
     sql_on: ${calendar.calendar_id} = ${enrollment.calendar_id} ;;
-    relationship: one_to_one
+    relationship: many_to_one
   }
 
   join: individual {
     type: left_outer
-    sql_on:  = ${enrollment.person_id} = ${individual.person_id} ;;
+    sql_on:   ${enrollment.person_id} = ${individual.person_id} ;;
     relationship: many_to_one
   }
 
   join: person {
     type: left_outer
-    sql_on: ${person.person_id} = ${enrollment.person_id} } ;;
+    sql_on: ${person.person_id} = ${enrollment.person_id} ;;
     relationship: one_to_one
   }
   join: school {
@@ -182,6 +188,23 @@ AND (enrollment.stateExclude = 'false') AND (calendar.endYear  = '2019') AND (ca
     }
 
   }
+
+explore: individual {
+  label: "Student information"
+
+  sql_always_where: ${enrollment.active} = 1 ;;
+
+
+
+
+
+  join: enrollment {
+
+    type: left_outer
+    sql_on:  ${individual.person_id} = ${enrollment.person_id}  ;;
+  relationship: one_to_many
+  }
+}
 
 explore: position {
 

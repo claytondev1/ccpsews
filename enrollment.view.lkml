@@ -495,6 +495,6 @@ view: enrollment {
 
   measure: count {
     type: count
-    drill_fields: [roll_forward_enrollment_id, enrollment.roll_forward_enrollment_id, enrollment.count]
+    drill_fields: [school.name , enrollment.count]
   }
 }

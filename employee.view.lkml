@@ -141,6 +141,6 @@ view: employee {
     type: count_distinct
     sql: ${emp} ;;
     value_format_name: decimal_0
-    drill_fields: [lname, fname, age, county_years_exp]
+    drill_fields: [school.name,lname, fname, age, county_years_exp]
   }
 }

@@ -139,9 +139,27 @@ view: individual {
     sql: ${TABLE}.personID ;;
   }
 
-  dimension: race_ethnicity {
+  dimension: race_ethnicity  {
     type: string
-    sql: ${TABLE}.raceEthnicity ;;
+    sql: case when ${TABLE}.raceEthnicity = 'B'
+              then 'Black'
+              when ${TABLE}.raceEthnicity = 'W'
+              then 'White'
+          when ${TABLE}.raceEthnicity = 'A'
+              then 'Asian'
+              when ${TABLE}.raceEthnicity = 'H'
+              then 'Hispanic'
+        when ${TABLE}.raceEthnicity = 'I'
+              then 'American Indian'
+
+        when ${TABLE}.raceEthnicity = 'M'
+              then 'Multi-race'
+               when ${TABLE}.raceEthnicity = 'P'
+              then 'Pacific Island'
+              else 'Other'
+    end
+    ;;
+
   }
 
   dimension: ssn {
