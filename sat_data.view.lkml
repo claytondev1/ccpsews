@@ -1,6 +1,6 @@
-view: satdata {
+view: sat_data {
   derived_table: {
-    sql: select row_number() over (order by instn_number) as pk
+    sql: select row_number() over (order by school_code) as pk
       ,*
     from dbo.SATData
     ;;
@@ -12,6 +12,12 @@ view: satdata {
     hidden: yes
     primary_key: yes
     sql: ${TABLE}.pk;;
+  }
+
+  dimension: school_code {
+    type: number
+    hidden: no
+    sql: ${TABLE}.school_code ;;
   }
 
   dimension: dstrct_avg_score_val {
@@ -39,10 +45,10 @@ view: satdata {
     sql: ${TABLE}.INSTN_NUM_TESTED_CNT ;;
   }
 
-  dimension: instn_number {
-    type: string
-    sql: ${TABLE}.INSTN_NUMBER ;;
-  }
+#   dimension: instn_number {
+#     type: string
+#     sql: ${TABLE}.INSTN_NUMBER ;;
+#   }
 
   dimension: national_avg_score_val {
     type: number

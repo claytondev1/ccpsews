@@ -14,6 +14,13 @@ view: actdata {
     sql: ${TABLE}.pk;;
   }
 
+  dimension: school_code {
+    type: number
+    hidden: no
+    sql: ${TABLE}.school_code ;;
+  }
+
+
   dimension: dstrct_avg_score_val {
     type: number
     sql: ${TABLE}.DSTRCT_AVG_SCORE_VAL ;;

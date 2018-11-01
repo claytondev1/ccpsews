@@ -250,10 +250,10 @@ explore: actdata {
 #   }
 
 
-  join: satdata {
+  join: sat_data {
 #     view_label: "Student Achievement"
     type: inner
-    sql_on: ${actdata.instn_number} = ${satdata.instn_number}
+    sql_on: ${actdata.school_code} = ${sat_data.school_code}
 
 
       ;;
@@ -261,7 +261,7 @@ explore: actdata {
   }
 }
 
-explore: satdata {}
+explore: sat_data {}
 
 explore: actdata_2 {
   from: actdata
