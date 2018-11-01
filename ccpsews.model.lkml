@@ -266,3 +266,7 @@ explore: sat_data {}
 explore: actdata_2 {
   from: actdata
 }
+
+explore: student_dual_enrollment {
+  from: student_dual_enrollment
+}
