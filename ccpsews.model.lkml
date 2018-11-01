@@ -235,34 +235,29 @@ explore: vacant_positions {
 #   }
 # }
 
-explore: actdata {
-  label: "Student Achievement"
-  from: actdata
-#   always_filter: {
-#     filters: {
-#       field: student_achievement.test_cmpnt_typ_cd
-#       value: "English"
-#     }
-#     filters: {
-#       field: satdata.test_cmpnt_typ_cd
-#       value: "Reading Test Score - New"
-#     }
-#   }
-
-
+explore: act_data {
+label: "SAT and ACT Scores"
   join: sat_data {
-#     view_label: "Student Achievement"
     type: inner
-    sql_on: ${actdata.school_code} = ${sat_data.school_code}
-
-
-      ;;
+    sql_on: ${act_data.school_code} = ${sat_data.school_code};;
     relationship: many_to_many
   }
-}
 
-explore: sat_data {}
+  join: school {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${act_data.school_code} = ${school.legacy_key_number} ;;
+  }
+  join: district_addresses {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${school.zip} = ${district_addresses.zip} ;;
 
-explore: actdata_2 {
-  from: actdata
+  }
 }
+#
+# explore: sat_data {}
+#
+# explore: actdata_2 {
+#   from: actdata
+# }

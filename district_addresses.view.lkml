@@ -21,7 +21,13 @@ view: district_addresses {
     sql: ${TABLE}.Longitude ;;
   }
 
-  dimension: school___location_ {
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
+  dimension: school_name {
     type: string
     sql: ${TABLE}."School   Location " ;;
   }

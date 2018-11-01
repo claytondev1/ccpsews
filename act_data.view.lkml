@@ -1,6 +1,6 @@
-view: actdata {
+view: act_data {
   derived_table: {
-    sql: select row_number() over (order by instn_number) as pk
+    sql: select row_number() over (order by school_code) as pk
       ,*
     from dbo.ACTData
     ;;
