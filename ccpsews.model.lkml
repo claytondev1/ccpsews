@@ -267,6 +267,6 @@ explore: actdata_2 {
   from: actdata
 }
 
-explore: student_dual_enrollment {
-  from: student_dual_enrollment
+explore: v_dual_enrollment {
+  label: "Student Dual Enrollment"
 }
