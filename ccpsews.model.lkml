@@ -255,9 +255,15 @@ label: "SAT and ACT Scores"
 
   }
 }
+
 #
 # explore: sat_data {}
 #
 # explore: actdata_2 {
 #   from: actdata
 # }
+
+
+explore: v_dual_enrollment {
+  label: "Student Dual Enrollment"
+}
