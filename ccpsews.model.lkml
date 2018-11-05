@@ -220,3 +220,50 @@ explore: vacant_positions {
   from: vacant_positions
   label: "vacant position"
 }
+
+
+########################################
+# Explores for Dr. Tappler's Analyisis #
+########################################
+
+# explore: student_achievement {
+#   from: district_addresses
+#
+#   join: actdata {
+#     type: left_outer
+#     sql_on:  ;;
+#   }
+# }
+
+explore: act_data {
+label: "SAT and ACT Scores"
+  join: sat_data {
+    type: inner
+    sql_on: ${act_data.school_code} = ${sat_data.school_code};;
+    relationship: many_to_many
+  }
+
+  join: school {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${act_data.school_code} = ${school.legacy_key_number} ;;
+  }
+  join: district_addresses {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${school.zip} = ${district_addresses.zip} ;;
+
+  }
+}
+
+#
+# explore: sat_data {}
+#
+# explore: actdata_2 {
+#   from: actdata
+# }
+
+
+explore: v_dual_enrollment {
+  label: "Student Dual Enrollment"
+}

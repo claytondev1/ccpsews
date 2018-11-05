@@ -147,6 +147,10 @@ view: employee {
     type: count_distinct
     sql: ${emp} ;;
     value_format_name: decimal_0
-    drill_fields: [school.name,lname, fname, age, county_years_exp]
+    drill_fields: [site_count*]
   }
+
+  set: site_count {
+    fields: [dept,loc, count]
+    }
 }
