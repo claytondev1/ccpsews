@@ -48,7 +48,17 @@ dimension:  pk {
 
   dimension: pay_cert_lvl {
     type: string
-    sql: ${TABLE}."Pay Cert Lvl" ;;
+    sql: case when ${TABLE}."Pay Cert Lvl" = '4'
+              then 'Bachelor'
+              when ${TABLE}."Pay Cert Lvl" = '5'
+              then 'Master'
+              when ${TABLE}."Pay Cert Lvl" = '6'
+              then 'Specialist'
+              when ${TABLE}."Pay Cert Lvl" = '7'
+              then 'Doctorate'
+              else 'other'
+        end
+        ;;
   }
 
   dimension: pay_step {
