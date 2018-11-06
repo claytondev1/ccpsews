@@ -1,4 +1,4 @@
-- dashboard: district_overview
+- dashboard: district_stats
   title: District Overview
   layout: newspaper
   embed_style:
