@@ -2,7 +2,7 @@
   title: District Stats
   layout: newspaper
   embed_style:
-    background_color: "#aaaaaa"
+    background_color: "#1a2daa"
     show_title: true
     title_color: "#3a4245"
     show_filters_bar: true
