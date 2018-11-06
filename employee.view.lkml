@@ -70,7 +70,13 @@ view: employee {
 
   dimension: gender {
     type: string
-    sql: ${TABLE}.Gender ;;
+    sql: case when ${TABLE}.Gender = 'M'
+             then 'Male'
+             when ${TABLE}.Gender = 'F'
+             then 'Female'
+             else 'Other'
+         end
+        ;;
   }
 
   dimension: lname {
