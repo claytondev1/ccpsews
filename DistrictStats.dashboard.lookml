@@ -1,13 +1,14 @@
 - dashboard: district_stats
-  title: District Overview
+  title: District Stats
   layout: newspaper
   embed_style:
-    background_color: "#fefefe"
+    background_color: "#aaaaaa"
     show_title: true
     title_color: "#3a4245"
     show_filters_bar: true
     tile_text_color: "#3a4245"
     text_tile_text_color: ''
+
   elements:
   - name: Total Employees by Full/Part Time
     title: Total Employees by Full/Part Time
