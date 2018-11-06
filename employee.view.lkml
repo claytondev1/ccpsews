@@ -60,7 +60,23 @@ view: employee {
 
   dimension: ethnicity {
     type: string
-    sql: ${TABLE}.Ethnicity ;;
+    sql:  case when ${TABLE}.Ethnicity = 'B'
+              then 'Black'
+              when ${TABLE}.Ethnicity = 'W'
+              then 'White'
+          when ${TABLE}.Ethnicity = 'A'
+              then 'Asian'
+              when ${TABLE}.Ethnicity = 'H'
+              then 'Hispanic'
+        when ${TABLE}.Ethnicity = 'I'
+              then 'American Indian'
+
+        when ${TABLE}.raceEthnicity = 'M'
+              then 'Multi-race'
+               when ${TABLE}.Ethnicity = 'P'
+              then 'Pacific Island'
+              else 'Other'
+    end;;
   }
 
   dimension: fname {
