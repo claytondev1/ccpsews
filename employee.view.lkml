@@ -71,7 +71,7 @@ view: employee {
         when ${TABLE}.Ethnicity = 'I'
               then 'American Indian'
 
-        when ${TABLE}.raceEthnicity = 'M'
+        when ${TABLE}.Ethnicity = 'M'
               then 'Multi-race'
                when ${TABLE}.Ethnicity = 'P'
               then 'Pacific Island'
