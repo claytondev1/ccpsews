@@ -76,6 +76,7 @@ view: employee {
               else 'Other'
           end
           ;;
+
   }
 
   dimension: fname {
@@ -166,6 +167,6 @@ view: employee {
   }
 
   set: site_count {
-    fields: [dept,loc, count]
+    fields: [dept,school.name, count]
     }
 }
