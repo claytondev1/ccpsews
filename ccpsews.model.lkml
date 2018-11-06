@@ -101,8 +101,15 @@ always_filter: {
     sql_on: ${employee_class.position} = ${position.position_nbr} ;;
     type: left_outer
     relationship: many_to_many
-
   }
+  join: school
+  {
+    sql_on: ${employee.loc} =${school.legacy_key_number} ;;
+    type: inner
+    relationship: one_to_one
+  }
+
+
 }
 
 explore: cohort_rate {
