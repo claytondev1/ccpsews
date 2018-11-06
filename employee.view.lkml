@@ -76,7 +76,6 @@ view: employee {
               else 'Other'
           end
           ;;
-
   }
 
   dimension: fname {
