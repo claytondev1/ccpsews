@@ -62,7 +62,7 @@ view: employee {
     type: string
     sql:  case when ${TABLE}.Ethnicity = 'B'
               then 'Black'
-              when ${TABLE}.Ethnicity = 'W'
+              when ${TABLE}.Ethnicity = 'C'
               then 'White'
           when ${TABLE}.Ethnicity = 'A'
               then 'Asian'
