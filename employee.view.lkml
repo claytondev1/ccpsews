@@ -72,7 +72,6 @@ view: employee {
              then 'Multi-Race'
               when ${TABLE}.Ethnicity = 'I'
              then 'American Indian'
-              when ${TABLE}.Ethnicity = 'O'
               else 'Other'
           end
           ;;
