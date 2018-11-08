@@ -13,7 +13,7 @@ view: v_dual_enrollment {
 
   dimension: course_number {
     type: string
-    sql: ${TABLE}.CourseNumber = '%400' ;;
+    sql: ${TABLE}.CourseNumber ;;
   }
 
   dimension: enrollment_id {
