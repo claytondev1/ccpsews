@@ -106,6 +106,7 @@ view: act_data {
     type: average
     sql: ${instn_avg_score_val} ;;
     value_format_name: decimal_2
+    drill_fields: [instn_name, avg_score_institution]
   }
 
 
