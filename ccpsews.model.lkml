@@ -192,9 +192,14 @@ AND calendar.endyear = 2019 ;;
     type: left_outer
     sql_on: ${school_year.end_year} = ${calendar.end_year};;
     relationship:  one_to_one
-    }
-
   }
+  join: course {
+    type: left_outer
+    sql_on: ${course.calendar_id} = ${calendar.calendar_id} ;;
+    relationship: one_to_one
+  }
+
+}
 
 explore: individual {
   label: "Student information"
