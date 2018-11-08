@@ -101,8 +101,15 @@ always_filter: {
     sql_on: ${employee_class.position} = ${position.position_nbr} ;;
     type: left_outer
     relationship: many_to_many
-
   }
+  join: school
+  {
+    sql_on: ${employee.loc} =${school.legacy_key_number} ;;
+    type: inner
+    relationship: one_to_one
+  }
+
+
 }
 
 explore: cohort_rate {
@@ -185,9 +192,14 @@ AND calendar.endyear = 2019 ;;
     type: left_outer
     sql_on: ${school_year.end_year} = ${calendar.end_year};;
     relationship:  one_to_one
-    }
-
   }
+  join: course {
+    type: left_outer
+    sql_on: ${course.calendar_id} = ${enrollment.calendar_id} ;;
+    relationship: one_to_one
+  }
+
+}
 
 explore: individual {
   label: "Student information"

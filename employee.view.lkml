@@ -60,7 +60,21 @@ view: employee {
 
   dimension: ethnicity {
     type: string
-    sql: ${TABLE}.Ethnicity ;;
+    sql: case when ${TABLE}.Ethnicity = 'B'
+             then 'Black'
+              when ${TABLE}.Ethnicity = 'C'
+             then 'White'
+              when ${TABLE}.Ethnicity = 'H'
+             then 'Hispanic'
+              when ${TABLE}.Ethnicity = 'A'
+             then 'Asian'
+              when ${TABLE}.Ethnicity = 'M'
+             then 'Multi-Race'
+              when ${TABLE}.Ethnicity = 'I'
+             then 'American Indian'
+              else 'Other'
+          end
+          ;;
   }
 
   dimension: fname {
@@ -151,6 +165,6 @@ view: employee {
   }
 
   set: site_count {
-    fields: [dept,loc, count]
+    fields: [dept,school.name, count]
     }
 }
