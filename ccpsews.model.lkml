@@ -195,7 +195,7 @@ AND calendar.endyear = 2019 ;;
   }
   join: course {
     type: left_outer
-    sql_on: ${course.calendar_id} = ${calendar.calendar_id} ;;
+    sql_on: ${course.calendar_id} = ${enrollment.calendar_id} ;;
     relationship: one_to_one
   }
 
