@@ -112,6 +112,59 @@ join: location
 
 }
 
+
+explore: teacher {
+  from: employee
+  # sql_always_where: ${employee_class.status} <> 'T' ;;
+
+  sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
+
+              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
+              ;;
+
+  always_filter: {
+    filters: {
+      field: employee_class.status
+      value: "A,N,P"
+    }
+    filters: {
+      field: employee_class.primary_class
+      value: "P"
+    }
+
+
+  }
+  join: employee_class {
+        sql_on: ${teacher.emp} = ${employee_class.emp} ;;
+
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+
+    type: left_outer
+    relationship: many_to_many
+  }
+
+  join: location
+  {
+    sql_on: ${teacher.loc} = ${location.location_cd} ;;
+    type: inner
+    relationship: one_to_one
+  }
+
+}
+
+
+
+
 explore: cohort_rate {
   label: "cohort"
   description: "Use this for cohort information"
