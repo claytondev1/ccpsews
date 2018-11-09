@@ -165,6 +165,6 @@ view: employee {
   }
 
   set: site_count {
-    fields: [dept,school.name, count]
+    fields: [dept, location.location_nm , count]
     }
 }

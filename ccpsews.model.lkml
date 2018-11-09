@@ -102,13 +102,13 @@ always_filter: {
     type: left_outer
     relationship: many_to_many
   }
-  join: school
-  {
-    sql_on: ${employee.loc} =${school.legacy_key_number} ;;
-    type: inner
-    relationship: one_to_one
-  }
 
+join: location
+{
+  sql_on: ${employee.loc} = ${location.location_cd} ;;
+  type: inner
+  relationship: one_to_one
+}
 
 }
 
@@ -273,4 +273,11 @@ label: "SAT and ACT Scores"
 
 explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
+}
+
+explore: v_vacant_positions_teacher
+{
+  label: "Vacant Position for Teacher"
+
+
 }
