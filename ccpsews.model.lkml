@@ -192,9 +192,14 @@ AND calendar.endyear = 2019 ;;
     type: left_outer
     sql_on: ${school_year.end_year} = ${calendar.end_year};;
     relationship:  one_to_one
-    }
-
   }
+  join: course {
+    type: left_outer
+    sql_on: ${course.calendar_id} = ${enrollment.calendar_id} ;;
+    relationship: many_to_many
+  }
+
+}
 
 explore: individual {
   label: "Student information"
@@ -269,6 +274,37 @@ label: "SAT and ACT Scores"
 # explore: actdata_2 {
 #   from: actdata
 # }
+
+explore: school {
+  label: "Student Achievement"
+  view_label: "School"
+
+  join: district_addresses {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${school.zip} = ${district_addresses.zip} ;;
+
+  }
+
+  join: georgia_milestones_derived {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${school.legacy_key_number} = ${georgia_milestones_derived.school_code} ;;
+  }
+
+  join: sat_data {
+    type: inner
+    sql_on: ${school.legacy_key_number} = ${sat_data.school_code};;
+    relationship: many_to_many
+  }
+
+  join: act_data {
+    type: inner
+    sql_on: ${school.legacy_key_number} = ${act_data.school_code};;
+    relationship: many_to_many
+  }
+
+}
 
 
 explore: v_dual_enrollment {
