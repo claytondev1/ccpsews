@@ -115,12 +115,12 @@ join: location
 
 explore: teacher {
   from: employee
-  # sql_always_where: ${employee_class.status} <> 'T' ;;
 
   sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
 
               and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
-              ;;
+            and ${class.class_code} like '50%'
+             ;;
 
  # always_filter: {
   #  filters: {
