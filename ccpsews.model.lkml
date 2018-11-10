@@ -373,9 +373,9 @@ explore: v_vacant_positions_teacher
 
 explore: employeesbycerttype {
   from: employee
-
+# and ${employee_class.primary_class} = 'P'
    sql_always_where: ${employee_class.status} <> 'T'
-  # and ${employee_class.primary_class} = 'P'
+
   and ${employee_class.pay_cert_Type} <> ''
 
   ;;
