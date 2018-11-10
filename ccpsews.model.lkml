@@ -366,7 +366,42 @@ explore: v_dual_enrollment {
 
 explore: v_vacant_positions_teacher
 {
-  label: "Vacant Position for Teacher"
+  label: "Vacant Position For Teacher"
 
+
+}
+
+explore: employeesbycerttype {
+  from: employee
+
+   sql_always_where: ${employee_class.status} <> 'T'
+  and ${employee_class.primary_class} = 'P'
+  and ${employee_class.pay_cert_Type} <> ''
+
+  ;;
+
+
+  join: employee_class {
+    sql_on: ${employeesbycerttype.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+
+  join: location
+  {
+    sql_on: ${employeesbycerttype.loc} = ${location.location_cd} ;;
+    type: inner
+    relationship: one_to_one
+  }
 
 }

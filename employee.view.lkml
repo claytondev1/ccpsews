@@ -154,8 +154,12 @@ view: employee {
 
     type: count_distinct
     sql: ${emp} ;;
-    drill_fields: [lname, fname, class.classtitle]
-  }
+    drill_fields: [emp_detail*]
+    }
+    set: emp_detail {
+      fields: [lname, fname, class.classtitle]
+    }
+
 
   measure: unique_employee {
     type: count_distinct
