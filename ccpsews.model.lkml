@@ -122,18 +122,18 @@ explore: teacher {
               and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
               ;;
 
-  always_filter: {
-    filters: {
-      field: employee_class.status
-      value: "A,N,P"
-    }
-    filters: {
-      field: employee_class.primary_class
-      value: "P"
-    }
+ # always_filter: {
+  #  filters: {
+   #   field: employee_class.status
+  #    value: "A,N,P"
+  #  }
+  #  filters: {
+  #    field: employee_class.primary_class
+  #    value: "P"
+  #  }
 
 
-  }
+#  }
   join: employee_class {
         sql_on: ${teacher.emp} = ${employee_class.emp} ;;
 
