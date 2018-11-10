@@ -76,17 +76,17 @@ explore: course_detail {
 
 
 explore: employee {
- # sql_always_where: ${employee_class.status} <> 'T' ;;
-always_filter: {
-  filters: {
-    field: employee_class.status
-    value: "A,N,P"
-    }
-  filters: {
-    field: employee_class.primary_class
-    value: "P"
-  }
-}
+  sql_always_where: ${employee_class.status} <> 'T' ;;
+#always_filter: {
+ # filters: {
+  #  field: employee_class.status
+  #  value: "A,N,P"
+   # }
+  #filters: {
+  #  field: employee_class.primary_class
+  #  value: "P"
+  #}
+#}
   join: employee_class {
     sql_on: ${employee.emp} = ${employee_class.emp} ;;
     type: left_outer
