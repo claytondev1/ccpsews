@@ -28,6 +28,10 @@ view: vacant_positions {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [site_count*]
+  }
+
+  set: site_count {
+    fields: [ location.location_nm ]
   }
 }

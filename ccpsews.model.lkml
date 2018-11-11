@@ -317,6 +317,12 @@ explore: activeposition {
 explore: vacant_positions {
   from: vacant_positions
   label: "vacant position"
+
+  join: location {
+    sql_on: ${location.location_cd}} = ${vacant_positions.site} ;;
+    type: inner
+    relationship: many_to_one
+  }
 }
 
 
