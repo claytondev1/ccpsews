@@ -103,6 +103,8 @@ explore: employee {
     relationship: many_to_many
   }
 
+
+
 join: location
 {
   sql_on: ${employee.loc} = ${location.location_cd} ;;
@@ -111,6 +113,25 @@ join: location
 }
 
 }
+
+explore: employee_by_degree {
+  from: employee
+  join: employee_class {
+    sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+ }
 
 
 explore: teacher {
