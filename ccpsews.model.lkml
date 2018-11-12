@@ -116,6 +116,10 @@ join: location
 
 explore: employee_by_degree {
   from: employee
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
+                    and ${employee_class.pay_cert_lvl} like 'Bachelor'
+                    and ${employee_class.pay_cert_lvl} like 'Specialist'
+                    and ${employee_class.pay_cert_lvl} like 'Doctorate';;
   join: employee_class {
     sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
     type: left_outer
@@ -361,7 +365,7 @@ label: "SAT and ACT Scores"
   join: school {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${act_data.school_code} = ${school.legacy_key_number} ;;
+    sql_on: ${act_data.school_code} = ${school.legacy_key_state_school_num} ;;
   }
   join: district_addresses {
     type: inner
@@ -392,18 +396,18 @@ explore: school {
   join: georgia_milestones_derived {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${school.legacy_key_number} = ${georgia_milestones_derived.school_code} ;;
+    sql_on: ${school.legacy_key_state_school_num} = ${georgia_milestones_derived.school_code} ;;
   }
 
   join: sat_data {
     type: inner
-    sql_on: ${school.legacy_key_number} = ${sat_data.school_code};;
+    sql_on: ${school.legacy_key_state_school_num} = ${sat_data.school_code};;
     relationship: many_to_many
   }
 
   join: act_data {
     type: inner
-    sql_on: ${school.legacy_key_number} = ${act_data.school_code};;
+    sql_on: ${school.legacy_key_state_school_num} = ${act_data.school_code};;
     relationship: many_to_many
   }
 
