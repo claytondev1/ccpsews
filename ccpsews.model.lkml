@@ -139,8 +139,8 @@ explore: teacher {
 
   sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
 
-              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
-            and ${class.class_code} like '50%'
+              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class}  like '498%' or  ${position.class} = '4990' )
+            and (${class.class_code} like '50%' or ${class.class_code} like '498%' or ${class.class_code} ='4990')
              ;;
 
  # always_filter: {
