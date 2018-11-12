@@ -311,7 +311,11 @@ explore: individual {
 explore: activeposition {
   from: position
   label: "active position"
-  sql_always_where:   ${activeposition.status} = 'A';;
+  sql_always_where:   ${activeposition.status} = 'A' and
+
+  ${activeposition.class} not like 'M%' and  ${activeposition.class} not like 'H%' and  ${activeposition.class} not like 'E%'
+
+  ;;
 
   join: class {
     sql_on: ${activeposition.class} = ${class.class_code} ;;
