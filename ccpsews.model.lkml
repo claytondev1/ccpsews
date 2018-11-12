@@ -340,8 +340,8 @@ explore: vacant_positions {
   label: "vacant position"
 
   join: location {
-    sql_on: ${location.location_cd}} = ${vacant_positions.site} ;;
-    type: left_outer
+    sql_on: ${location.location_cd} = ${vacant_positions.site} ;;
+    type: inner
     relationship: one_to_many
   }
 }
