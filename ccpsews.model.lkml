@@ -116,10 +116,10 @@ join: location
 
 explore: employee_by_degree {
   from: employee
-  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like "Master"
-                    and ${employee_class.pay_cert_lvl} like "Bachelor"
-                    and ${employee_class.pay_cert_lvl} like "Specialist"
-                    and ${employee_class.pay_cert_lvl} like "Doctorate";;
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
+                    and ${employee_class.pay_cert_lvl} like 'Bachelor'
+                    and ${employee_class.pay_cert_lvl} like 'Specialist'
+                    and ${employee_class.pay_cert_lvl} like 'Doctorate';;
   join: employee_class {
     sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
     type: left_outer
