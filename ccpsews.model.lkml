@@ -76,17 +76,17 @@ explore: course_detail {
 
 
 explore: employee {
- # sql_always_where: ${employee_class.status} <> 'T' ;;
-always_filter: {
-  filters: {
-    field: employee_class.status
-    value: "A,N,P"
-    }
-  filters: {
-    field: employee_class.primary_class
-    value: "P"
-  }
-}
+  sql_always_where: ${employee_class.status} <> 'T' ;;
+#always_filter: {
+ # filters: {
+  #  field: employee_class.status
+  #  value: "A,N,P"
+   # }
+  #filters: {
+  #  field: employee_class.primary_class
+  #  value: "P"
+  #}
+#}
   join: employee_class {
     sql_on: ${employee.emp} = ${employee_class.emp} ;;
     type: left_outer
@@ -102,15 +102,89 @@ always_filter: {
     type: left_outer
     relationship: many_to_many
   }
-  join: school
+
+
+
+join: location
+{
+  sql_on: ${employee.loc} = ${location.location_cd} ;;
+  type: inner
+  relationship: one_to_one
+}
+
+}
+
+explore: employee_by_degree {
+  from: employee
+  join: employee_class {
+    sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+ }
+
+
+explore: teacher {
+  from: employee
+
+  sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
+
+              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
+            and ${class.class_code} like '50%'
+             ;;
+
+ # always_filter: {
+  #  filters: {
+   #   field: employee_class.status
+  #    value: "A,N,P"
+  #  }
+  #  filters: {
+  #    field: employee_class.primary_class
+  #    value: "P"
+  #  }
+
+
+#  }
+  join: employee_class {
+        sql_on: ${teacher.emp} = ${employee_class.emp} ;;
+
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+
+    type: left_outer
+    relationship: many_to_many
+  }
+
+  join: location
   {
-    sql_on: ${employee.loc} =${school.legacy_key_number} ;;
+    sql_on: ${teacher.loc} = ${location.location_cd} ;;
     type: inner
     relationship: one_to_one
   }
 
-
 }
+
+
+
 
 explore: cohort_rate {
   label: "cohort"
@@ -218,19 +292,58 @@ explore: individual {
   }
 }
 
-explore: position {
+#explore: position1 {
 
-  from: position
+ # from: position
+#  label: "active position"
+#  join: employee_class {
+#      sql_on: ${position.position_nbr} = ${employee_class.position} ;;
+#      relationship: one_to_one
+
+ # }
+#}
+
+
+explore: activeposition {
+  from: employee
   label: "active position"
-  join: employee_class {
-      sql_on: ${position.position_nbr} = ${employee_class.position} ;;
-      relationship: one_to_one
+  sql_always_where:   ${position.status} = 'A';;
 
+  join: employee_class {
+    sql_on: ${activeposition.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
   }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: one_to_one
+  }
+
+  join: location
+  {
+    sql_on: ${activeposition.loc} = ${location.location_cd} ;;
+    type: inner
+    relationship: one_to_one
+  }
+
 }
+
+
 explore: vacant_positions {
   from: vacant_positions
   label: "vacant position"
+
+  join: location {
+    sql_on: ${location.location_cd}} = ${vacant_positions.site} ;;
+    type: inner
+    relationship: one_to_one
+  }
 }
 
 
@@ -309,4 +422,46 @@ explore: school {
 
 explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
+}
+
+explore: v_vacant_positions_teacher
+{
+  label: "Vacant Position For Teacher"
+
+
+}
+
+explore: employeesbycerttype {
+  from: employee
+# and ${employee_class.primary_class} = 'P'
+   sql_always_where: ${employee_class.status} <> 'T'
+
+  and ${employee_class.pay_cert_Type} <> ''
+
+  ;;
+
+
+  join: employee_class {
+    sql_on: ${employeesbycerttype.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+
+  join: location
+  {
+    sql_on: ${employeesbycerttype.loc} = ${location.location_cd} ;;
+    type: inner
+    relationship: one_to_one
+  }
+
 }
