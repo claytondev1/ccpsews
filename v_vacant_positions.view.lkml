@@ -28,10 +28,18 @@ view: vacant_positions {
 
   measure: count {
     type: count
+    drill_fields: []
+  }
+
+  measure: unique_position {
+    type: count_distinct
+    sql: ${position_nbr} ;;
+    value_format_name: decimal_0
     drill_fields: [site_count*]
   }
 
   set: site_count {
-    fields: [ location.location_nm ]
+    fields: [ location.location_nm , count]
   }
+
 }
