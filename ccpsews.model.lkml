@@ -116,6 +116,7 @@ join: location
 
 explore: employee_by_degree {
   from: employee
+  sql_always_where: ${employee_class.status} <> 'T' ;;
   join: employee_class {
     sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
     type: left_outer
