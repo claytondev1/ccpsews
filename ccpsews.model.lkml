@@ -341,7 +341,7 @@ explore: vacant_positions {
 
   join: location {
     sql_on: ${location.location_cd}} = ${vacant_positions.site} ;;
-    type: inner
+    type: left_outer
     relationship: one_to_many
   }
 }
