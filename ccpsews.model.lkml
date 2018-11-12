@@ -140,8 +140,8 @@ explore: teacher {
 
   sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
 
-              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class} not like '498%' and  ${position.class}  like '4990' )
-            and ${class.class_code} like '50%'
+              and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class}  like '498%' or  ${position.class} = '4990' )
+            and (${class.class_code} like '50%' or ${class.class_code} like '498%' or ${class.class_code} ='4990')
              ;;
 
  # always_filter: {
@@ -341,9 +341,9 @@ explore: vacant_positions {
   label: "vacant position"
 
   join: location {
-    sql_on: ${location.location_cd}} = ${vacant_positions.site} ;;
+    sql_on: ${location.location_cd} = ${vacant_positions.site} ;;
     type: inner
-    relationship: one_to_one
+    relationship: one_to_many
   }
 }
 
@@ -372,7 +372,7 @@ label: "SAT and ACT Scores"
   join: school {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${act_data.school_code} = ${school.legacy_key_number} ;;
+    sql_on: ${act_data.school_code} = ${school.legacy_key_state_school_num} ;;
   }
   join: district_addresses {
     type: inner
@@ -403,18 +403,18 @@ explore: school {
   join: georgia_milestones_derived {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${school.legacy_key_number} = ${georgia_milestones_derived.school_code} ;;
+    sql_on: ${school.legacy_key_state_school_num} = ${georgia_milestones_derived.school_code} ;;
   }
 
   join: sat_data {
     type: inner
-    sql_on: ${school.legacy_key_number} = ${sat_data.school_code};;
+    sql_on: ${school.legacy_key_state_school_num} = ${sat_data.school_code};;
     relationship: many_to_many
   }
 
   join: act_data {
     type: inner
-    sql_on: ${school.legacy_key_number} = ${act_data.school_code};;
+    sql_on: ${school.legacy_key_state_school_num} = ${act_data.school_code};;
     relationship: many_to_many
   }
 
