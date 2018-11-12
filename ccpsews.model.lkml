@@ -305,29 +305,19 @@ explore: individual {
 
 
 explore: activeposition {
-  from: employee
+  from: position
   label: "active position"
-  sql_always_where:   ${position.status} = 'A';;
+  sql_always_where:   ${activeposition.status} = 'A';;
 
-  join: employee_class {
-    sql_on: ${activeposition.emp} = ${employee_class.emp} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
   join: class {
-    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    sql_on: ${activeposition.class} = ${class.class_code} ;;
     type: left_outer
     relationship: many_to_one
-  }
-  join: position {
-    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
-    type: left_outer
-    relationship: one_to_one
   }
 
   join: location
   {
-    sql_on: ${activeposition.loc} = ${location.location_cd} ;;
+    sql_on: ${activeposition.site} = ${location.location_cd} ;;
     type: inner
     relationship: one_to_one
   }

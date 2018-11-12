@@ -27,7 +27,8 @@ view: vacant_positions {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${position_nbr}  ;;
     drill_fields: []
   }
 
