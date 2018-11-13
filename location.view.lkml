@@ -20,6 +20,7 @@ view: location {
   dimension: location_nm {
     type: string
     sql: ${TABLE}.location_nm ;;
+    label: "Location Name"
   }
 
   dimension: location_type {
