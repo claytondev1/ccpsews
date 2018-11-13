@@ -30,6 +30,7 @@ view: class {
   dimension: class_title {
     type: string
     sql: ${TABLE}.classTitle ;;
+    label: "Job title"
   }
 
   dimension: comp_sched {
