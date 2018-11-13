@@ -13,7 +13,7 @@ view: class {
 
   dimension: class_code {
     type: string
-    primary_key: yes
+
     sql: ${TABLE}.classCode ;;
   }
 
@@ -45,6 +45,14 @@ view: class {
   dimension: fiscal_year {
     type: string
     sql: ${TABLE}.fiscalYear ;;
+  }
+
+  dimension: composite_primary_key {
+
+    primary_key: yes
+    type: string
+    hidden: yes
+    sql:  concat (${class_code}, ' ', ${fiscal_year} ) ;;
   }
 
   dimension: hourly_flag {
