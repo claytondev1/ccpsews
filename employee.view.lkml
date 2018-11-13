@@ -148,8 +148,18 @@ view: employee {
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.Zip ;;
+
+
+  }
+
+  dimension: zip5digit
+  {
+
+    type: zipcode
+    sql: left(${TABLE}.zip,5);;
     map_layer_name: us_zipcode_tabulation_areas
     drill_fields: [fname]
+
 
   }
 
