@@ -2,7 +2,7 @@ view: vacant_positions {
 #   sql_table_name: dbo.vVacantPositions ;;
 derived_table: {
   sql:
-        select row_number() over (order by class_title) as pk
+        select row_number() over (order by classtitle) as pk
           ,*
         from dbo.vVacantPositions
     ;;
