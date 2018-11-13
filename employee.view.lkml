@@ -80,6 +80,7 @@ view: employee {
 
   dimension: fname {
     type: string
+    label: "First name"
     sql: ${TABLE}.Fname ;;
   }
 
@@ -96,6 +97,7 @@ view: employee {
 
   dimension: lname {
     type: string
+    label: "Last name"
     sql: ${TABLE}.Lname ;;
   }
 
