@@ -19,6 +19,7 @@ view: vacant_positions {
   dimension: position_nbr {
     type: string
     sql: ${TABLE}.positionNbr ;;
+    primary_key: yes
   }
 
   dimension: site {
