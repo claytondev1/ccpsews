@@ -54,6 +54,7 @@ view: employee {
 
   dimension: emp {
     label: "Employee #"
+    primary_key: yes
     type: number
     sql: ${TABLE}."Emp#" ;;
   }
@@ -147,6 +148,9 @@ view: employee {
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.Zip ;;
+    map_layer_name: us_zipcode_tabulation_areas
+    drill_fields: [fname]
+
   }
 
   measure: count {

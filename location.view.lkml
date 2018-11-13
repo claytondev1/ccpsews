@@ -13,6 +13,7 @@ view: location {
 
   dimension: location_cd {
     type: string
+    primary_key: yes
     sql: ${TABLE}.location_cd ;;
   }
 
