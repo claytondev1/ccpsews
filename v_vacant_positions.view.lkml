@@ -1,7 +1,20 @@
 view: vacant_positions {
-  sql_table_name: dbo.vVacantPositions ;;
+#   sql_table_name: dbo.vVacantPositions ;;
+derived_table: {
+  sql:
+        select row_number() over (order by class_title) as pk
+          ,*
+        from dbo.vVacantPositions
+    ;;
+}
 
-  dimension: class {
+dimension: pk {
+  primary_key: yes
+  hidden: yes
+  sql: ${TABLE}.pk ;;
+}
+
+ dimension: class {
     type: string
     sql: ${TABLE}.class ;;
   }
@@ -19,7 +32,6 @@ view: vacant_positions {
   dimension: position_nbr {
     type: string
     sql: ${TABLE}.positionNbr ;;
-    primary_key: yes
   }
 
   dimension: site {
