@@ -51,6 +51,7 @@ dimension: pk {
     sql: ${position_nbr} ;;
     value_format_name: decimal_0
     drill_fields: [site_count*]
+    label: "Total Positions"
   }
 
   set: site_count {
