@@ -172,7 +172,7 @@ view: employee {
     drill_fields: [emp_detail*]
     }
     set: emp_detail {
-      fields: [lname, fname, class.classtitle]
+      fields: [lname, fname, class.class_title]
     }
 
 
