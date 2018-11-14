@@ -163,11 +163,10 @@ view: employee {
     map_layer_name: us_zipcode_tabulation_areas
     drill_fields: [site_count*]
 
-
   }
 
   measure: count {
-   # hidden: yes
+
 
     type: count_distinct
     sql: ${emp} ;;
