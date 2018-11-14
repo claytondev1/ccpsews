@@ -63,6 +63,7 @@ view: position {
 
   measure: count {
     type: count
+    label: "Total Positions"
     drill_fields: []
   }
 
