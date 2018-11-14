@@ -1,6 +1,10 @@
 view: v_vacant_positions_teacher {
   sql_table_name: dbo.vVacantPositionsTeacher ;;
 
+
+
+
+
   dimension: class {
     type: string
     sql: ${TABLE}.class ;;
@@ -19,8 +23,7 @@ view: v_vacant_positions_teacher {
   dimension: position_nbr {
     type: string
     sql: ${TABLE}.positionNbr ;;
-    primary_key: yes
-  }
+    }
 
   dimension: site {
     type: string
@@ -30,6 +33,7 @@ view: v_vacant_positions_teacher {
   measure: count {
     type: count
 
+    label: "Total Positions"
   }
 
   measure: unique_position {

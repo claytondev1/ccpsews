@@ -344,6 +344,18 @@ explore: vacant_positions {
   }
 }
 
+explore: v_vacant_positions_teacher
+{
+  label: "Teacher Vacancies"
+  join: location {
+    sql_on: ${location.location_cd} = ${v_vacant_positions_teacher.site} ;;
+    type: inner
+    relationship: one_to_many
+  }
+
+
+}
+
 
 ########################################
 # Explores for Dr. Tappler's Analyisis #
@@ -422,12 +434,7 @@ explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
 }
 
-explore: v_vacant_positions_teacher
-{
-  label: "Vacant Position For Teacher"
 
-
-}
 
 explore: employeesbycerttype {
   from: employee
