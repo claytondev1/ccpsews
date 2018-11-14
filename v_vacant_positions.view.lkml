@@ -41,6 +41,7 @@ dimension: pk {
 
   measure: count {
     type: count_distinct
+    label: "Total Positions"
     sql: ${position_nbr}  ;;
     value_format_name: decimal_0
     drill_fields: []
