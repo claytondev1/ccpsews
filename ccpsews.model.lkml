@@ -325,6 +325,18 @@ explore: activeposition {
   label: "active position"
   sql_always_where:   ${activeposition.status} = 'A' and
 
+
+  ${class.fiscal_year} =  'FY' +  substring
+              (Cast(
+                 (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                  then year(getdate()) + 1
+                else
+                year(getdate())
+                end )
+                     as varchar
+                )
+                , 3, 2 ) and
+
   ${activeposition.class} not like 'M%' and  ${activeposition.class} not like 'H%' and  ${activeposition.class} not like 'E%'
 
   ;;
