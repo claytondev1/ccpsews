@@ -44,7 +44,7 @@ dimension: pk {
     label: "Total Positions"
     sql: ${position_nbr}  ;;
     value_format_name: decimal_0
-    drill_fields: []
+
   }
 
   measure: unique_position {
