@@ -1,18 +1,18 @@
 view: vacant_positions {
-#   sql_table_name: dbo.vVacantPositions ;;
-derived_table: {
-  sql:
-        select row_number() over (order by classtitle) as pk
-          ,*
-        from dbo.vVacantPositions
-    ;;
-}
+  sql_table_name: dbo.vVacantPositions ;;
+# derived_table: {
+#   sql:
+#         select row_number() over (order by classtitle) as pk
+#           ,*
+#         from dbo.vVacantPositions
+#     ;;
+# }
 
-dimension: pk {
-  primary_key: yes
-  hidden: yes
-  sql: ${TABLE}.pk ;;
-}
+# dimension: pk {
+#   primary_key: yes
+#   hidden: yes
+#   sql: ${TABLE}.pk ;;
+# }
 
  dimension: class {
     type: string
@@ -52,7 +52,7 @@ dimension: pk {
     sql: ${position_nbr} ;;
     value_format_name: decimal_0
     drill_fields: [site_count*]
-    label: "Total Positions"
+
   }
 
   set: site_count {
