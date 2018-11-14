@@ -29,7 +29,7 @@ view: v_vacant_positions_teacher {
 
   measure: count {
     type: count
-    drill_fields: []
+
   }
 
   measure: unique_position {
