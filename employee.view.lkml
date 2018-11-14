@@ -165,6 +165,11 @@ view: employee {
 
   }
 
+dimension: location_name  {
+
+  type: string
+  sql: ${location.location_nm} ;;
+}
   measure: count {
 
 
@@ -187,6 +192,6 @@ view: employee {
   }
 
   set: site_count {
-    fields: [ location.location_nm , count]
+    fields: [ location_name , count]
     }
 }

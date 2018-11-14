@@ -114,28 +114,28 @@ join: location
 
 }
 
-explore: employee_by_degree {
-  from: employee
-  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
-                    and ${employee_class.pay_cert_lvl} like 'Bachelor'
-                    and ${employee_class.pay_cert_lvl} like 'Specialist'
-                    and ${employee_class.pay_cert_lvl} like 'Doctorate';;
-  join: employee_class {
-    sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
-  join: class {
-    sql_on: ${employee_class.class} = ${class.class_code} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
-  join: position {
-    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
-    type: left_outer
-    relationship: many_to_many
-  }
- }
+# explore: employee_by_degree {
+#   from: employee
+#   sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
+#                     and ${employee_class.pay_cert_lvl} like 'Bachelor'
+#                     and ${employee_class.pay_cert_lvl} like 'Specialist'
+#                     and ${employee_class.pay_cert_lvl} like 'Doctorate';;
+#   join: employee_class {
+#     sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
+#     type: left_outer
+#     relationship: many_to_one
+#   }
+#   join: class {
+#     sql_on: ${employee_class.class} = ${class.class_code} ;;
+#     type: left_outer
+#     relationship: many_to_one
+#   }
+#   join: position {
+#     sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+#     type: left_outer
+#     relationship: many_to_many
+#   }
+#  }
 
 
 explore: teacher {
@@ -221,6 +221,7 @@ explore: rosters_by_high
 }
 
 explore: worker {
+  fields: [ALL_FIELDS*, -worker.location_name]
   from: employee
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
