@@ -161,7 +161,7 @@ view: employee {
     label: "Zipcode"
     sql: left(${TABLE}.zip,5);;
     map_layer_name: us_zipcode_tabulation_areas
-    drill_fields: [fname]
+    drill_fields: [site_count*]
 
 
   }
@@ -171,6 +171,7 @@ view: employee {
 
     type: count_distinct
     sql: ${emp} ;;
+    label: "Total Employees"
     drill_fields: [emp_detail*]
     }
     set: emp_detail {
