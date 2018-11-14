@@ -76,7 +76,18 @@ explore: course_detail {
 
 
 explore: employee {
-  sql_always_where: ${employee_class.status} <> 'T' ;;
+  sql_always_where: ${employee_class.status} <> 'T' and
+  ${class.fiscal_year} =  'FY' +  substring
+              (Cast(
+                 (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                  then year(getdate()) + 1
+                else
+                year(getdate())
+                end )
+                     as varchar
+                )
+                , 3, 2 )
+  ;;
 #always_filter: {
  # filters: {
   #  field: employee_class.status
@@ -372,6 +383,7 @@ explore: v_vacant_positions_teacher
 # }
 
 explore: act_data {
+
 label: "SAT and ACT Scores"
   join: sat_data {
     type: inner
@@ -469,5 +481,18 @@ explore: employeesbycerttype {
     type: inner
     relationship: one_to_one
   }
+
+}
+
+# explore: testaccess {
+#   from: location
+#   access_filter: {
+#     field: location_cd
+#     user_attribute: school
+#
+#   }
+# }
+
+explore: district_addresses  {
 
 }
