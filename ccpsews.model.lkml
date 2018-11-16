@@ -1,7 +1,10 @@
 connection: "edficcps"
 
-include: "*.view.lkml"         # include all views in this project
-include: "*.dashboard.lookml"  # include all dashboards in this project
+#include: "*.view.lkml"         # include all views in this project
+#include: "*.dashboard.lookml"  # include all dashboards in this project
+
+include: "*.view"
+#include: "*.dashboard"
 
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
@@ -76,7 +79,7 @@ explore: course_detail {
 
 
 explore: employee {
-  sql_always_where: ${employee_class.status} <> 'T' and
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.primary_class} = 'P' and
   ${class.fiscal_year} =  'FY' +  substring
               (Cast(
                  (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )

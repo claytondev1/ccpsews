@@ -2,7 +2,11 @@ view: v_vacant_positions_teacher {
   sql_table_name: dbo.vVacantPositionsTeacher ;;
 
 
-
+  dimension: pkey {
+    primary_key: yes
+    sql: CONCAT(${TABLE}.class, ${TABLE}.site) ;;
+    hidden: yes
+  }
 
 
   dimension: class {
