@@ -12,7 +12,7 @@ view: v_vacant_positions_teacher {
  dimension: pkey {
    primary_key: yes
    hidden: yes
-   sql: concat( ${TABLE}.positionnbr,  , ${TABLE}.class)  ;;
+   sql: concat( ${TABLE}.positionnbr, ' '  , ${TABLE}.class)  ;;
  }
 
 
