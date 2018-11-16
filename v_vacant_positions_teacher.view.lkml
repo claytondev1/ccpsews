@@ -1,12 +1,21 @@
 view: v_vacant_positions_teacher {
-  sql_table_name: dbo.vVacantPositionsTeacher ;;
+ sql_table_name: dbo.vVacantPositionsTeacher ;;
+
+# derived_table: {
+#    sql:
+#          select row_number() over (order by classtitle) as pk
+#            ,*
+#          from dbo.vVacantPositionsTeacher
+#      ;;
+#  }
+
+ dimension: pkey {
+   primary_key: yes
+   hidden: yes
+   sql: concat( ${TABLE}.positionnbr,  , ${TABLE}.class)  ;;
+ }
 
 
-  dimension: pkey {
-    primary_key: yes
-    sql: CONCAT(${TABLE}.class, ${TABLE}.site) ;;
-    hidden: yes
-  }
 
 
   dimension: class {
