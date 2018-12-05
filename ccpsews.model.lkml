@@ -257,7 +257,11 @@ AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enro
 AND (((enrollment.noShow IS NULL OR LEN(enrollment.noShow ) = 0 ) OR enrollment.noShow = 'false'))
 AND (enrollment.stateExclude = 'false')
 
-AND calendar.endyear = 2019 ;;
+AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                  then year(getdate()) + 1
+                else
+                year(getdate())
+                end   ;;
 
     join: calendar {
     type: left_outer
