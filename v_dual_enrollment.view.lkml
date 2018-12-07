@@ -58,6 +58,6 @@ view: v_dual_enrollment {
   }
   measure: count {
     type: count
-    drill_fields: [school.name, lastname, firstname, course_name]
+    drill_fields: [school.name , v_dual_enrollment.count]
   }
 }
