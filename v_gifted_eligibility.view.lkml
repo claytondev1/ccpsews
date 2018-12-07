@@ -30,6 +30,6 @@ view: v_gifted_eligibility {
 
   measure: count {
     type: count
-    drill_fields: [school.name, lastname, first_name]
+    drill_fields: [school.name, count ]
   }
 }
