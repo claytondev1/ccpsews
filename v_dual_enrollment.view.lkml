@@ -8,6 +8,7 @@ view: v_dual_enrollment {
 
   dimension: course_name {
     type: string
+    label: "Course Name"
     sql: ${TABLE}.CourseName ;;
   }
 
@@ -22,6 +23,7 @@ view: v_dual_enrollment {
   }
 
   dimension: firstname {
+    label: "First Name"
     type: string
     sql: ${TABLE}.firstname ;;
   }
@@ -32,6 +34,7 @@ view: v_dual_enrollment {
   }
 
   dimension: lastname {
+    label: "Lasst Name"
     type: string
     sql: ${TABLE}.lastname ;;
   }
@@ -59,8 +62,13 @@ view: v_dual_enrollment {
 
   measure: count {
     type: count
-    drill_fields: [school.name , v_dual_enrollment.count]
+    label: "Total Enrollment"
+    drill_fields: [school.name , student_courses ]
   }
+ measure: student_courses {
+   type: count_distinct
+  drill_fields: [lastname,firstname,course_name]
 
+ }
 
 }
