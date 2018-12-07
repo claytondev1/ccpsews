@@ -58,6 +58,7 @@ dimension: school_id {
 
   measure: count {
     type: count
-    drill_fields: [school.name, lastname, firstname, course_name]
+    label: "Total Students"
+    drill_fields: [school.name, count]
   }
 }
