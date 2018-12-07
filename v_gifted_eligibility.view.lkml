@@ -29,7 +29,8 @@ view: v_gifted_eligibility {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${studentnumber} ;;
     label: "Total Students"
     drill_fields: [school.name, count ]
   }
