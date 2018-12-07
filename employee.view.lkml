@@ -111,6 +111,16 @@ view: employee {
     sql: ${TABLE}.Mname ;;
   }
 
+  dimension_group: hired_at {
+    type: time
+    timeframes: [date
+        ,week
+        ,month
+        ,year
+        ]
+    sql: cast(${TABLE}."Original Hire Date" as date) ;;
+  }
+
   dimension: original_hire_date {
     type: string
     sql: ${TABLE}."Original Hire Date" ;;
@@ -134,6 +144,16 @@ view: employee {
   dimension: street_2 {
     type: string
     sql: ${TABLE}."Street 2" ;;
+  }
+
+  dimension_group: terminated_at {
+    type: time
+    timeframes: [date
+        ,week
+        ,month
+        ,year
+        ]
+    sql: cast(${TABLE}."Termination Date" as date) ;;
   }
 
   dimension: termination_date {
