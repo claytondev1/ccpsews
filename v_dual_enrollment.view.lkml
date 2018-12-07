@@ -51,8 +51,13 @@ view: v_dual_enrollment {
     sql: ${TABLE}.teacherDisplay ;;
   }
 
+  dimension: school_id {
+    type: string
+    sql: ${TABLE}.SchoolID ;;
+
+  }
   measure: count {
     type: count
-    drill_fields: [calendar_name, lastname, firstname, course_name]
+    drill_fields: [school.name, lastname, firstname, course_name]
   }
 }

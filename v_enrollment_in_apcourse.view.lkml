@@ -11,6 +11,11 @@ view: v_enrollment_in_apcourse {
     sql: ${TABLE}.CourseNumber ;;
   }
 
+dimension: school_id {
+  type: string
+  sql: ${TABLE}.SchoolID ;;
+
+}
   dimension: enrollment_id {
     type: number
     sql: ${TABLE}.enrollmentID ;;
@@ -53,6 +58,6 @@ view: v_enrollment_in_apcourse {
 
   measure: count {
     type: count
-    drill_fields: [name, lastname, firstname, course_name]
+    drill_fields: [school.name, lastname, firstname, course_name]
   }
 }

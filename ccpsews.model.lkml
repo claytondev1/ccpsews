@@ -467,11 +467,46 @@ explore: school {
 
 explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
+    relationship: one_to_one
+  }
+
 }
 
 explore: v_enrollment_in_apcourse {
   label: "Enrollment By AP Course "
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
+    relationship: one_to_one
+  }
 }
+
+explore: v_gifted_eligibility {
+
+  label: "Enrollment By Gifted Student"
+
+join: school {
+  type: inner
+  sql_on: ${school.school_id} = ${v_gifted_eligibility.school_id}  ;;
+  relationship: one_to_one
+  }
+}
+
+explore: v_intervention_programs {
+
+  label: "Enrollment By Intervention Programs"
+
+  join: school {
+    type: inner
+    sql_on: ${school.school_id} = ${v_intervention_programs.school_id}  ;;
+    relationship: one_to_one
+  }
+}
+
 
 explore: employeesbycerttype {
   from: employee
