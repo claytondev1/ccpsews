@@ -60,13 +60,15 @@ view: v_dual_enrollment {
 
   }
 
-  measure: count {
-    type: count
+  measure: student_courses {
+    type: count_distinct
+    sql: ${student_number} ;;
     label: "Total Enrollment"
-    drill_fields: [school.name , student_courses ]
+    drill_fields: [school.name , v_dual_enrollment.count ]
   }
- measure: student_courses {
+ measure: count {
    type: count_distinct
+  sql: ${student_number} ;;
   drill_fields: [lastname,firstname,course_name]
 
  }
