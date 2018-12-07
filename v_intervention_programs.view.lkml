@@ -28,7 +28,8 @@ view: v_intervention_programs {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${studentnumber} ;;
     label: "Total Students"
     drill_fields: [school.name, count]
   }

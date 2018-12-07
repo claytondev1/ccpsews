@@ -66,11 +66,13 @@ view: v_dual_enrollment {
     label: "Total Enrollment"
     drill_fields: [school.name , v_dual_enrollment.count ]
   }
+
  measure: count {
    type: count_distinct
-  sql: ${student_number} ;;
-  drill_fields: [lastname,firstname,course_name]
+   sql: ${student_number} ;;
+   drill_fields: [lastname,firstname,course_name]
+   }
 
- }
+
 
 }
