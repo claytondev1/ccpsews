@@ -57,7 +57,7 @@ view: individual {
     type: string
     sql: case when ${TABLE}.gender = 'M'
          then 'Male'
-    sql: case when ${TABLE}.gender = 'F'
+         case when ${TABLE}.gender = 'F'
          then 'Female'
     end
     ;;
