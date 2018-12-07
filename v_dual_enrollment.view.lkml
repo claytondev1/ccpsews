@@ -56,8 +56,11 @@ view: v_dual_enrollment {
     sql: ${TABLE}.SchoolID ;;
 
   }
+
   measure: count {
     type: count
     drill_fields: [school.name , v_dual_enrollment.count]
   }
+
+
 }
