@@ -469,7 +469,9 @@ explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
 }
 
-
+explore: v_enrollment_in_apcourse {
+  label: "Enrollment By AP Course "
+}
 
 explore: employeesbycerttype {
   from: employee
