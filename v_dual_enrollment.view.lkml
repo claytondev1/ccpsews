@@ -34,7 +34,7 @@ view: v_dual_enrollment {
   }
 
   dimension: lastname {
-    label: "Lasst Name"
+    label: "Last Name"
     type: string
     sql: ${TABLE}.lastname ;;
   }
