@@ -23,6 +23,7 @@ dimension: school_id {
 
   dimension: firstname {
     type: string
+    label: "First Name"
     sql: ${TABLE}.firstname ;;
   }
 
@@ -33,6 +34,7 @@ dimension: school_id {
 
   dimension: lastname {
     type: string
+    label: "Last Name"
     sql: ${TABLE}.lastname ;;
   }
 
@@ -57,7 +59,8 @@ dimension: school_id {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${student_number} ;;
     label: "Total Students"
     drill_fields: [school.name, count]
   }
