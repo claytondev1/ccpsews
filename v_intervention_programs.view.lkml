@@ -29,6 +29,7 @@ view: v_intervention_programs {
 
   measure: count {
     type: count
-    drill_fields: [school.name, lastname, first_name]
+    label: "Total Students"
+    drill_fields: [school.name, count]
   }
 }
