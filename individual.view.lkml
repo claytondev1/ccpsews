@@ -59,7 +59,6 @@ view: individual {
          then 'Male'
     sql: case when ${TABLE}.gender = 'F'
          then 'Female'
-         else 'other'
     end
     ;;
   }
