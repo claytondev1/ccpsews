@@ -58,7 +58,10 @@ view: individual {
     sql: case when ${TABLE}.gender = 'M'
          then 'Male'
     sql: case when ${TABLE}.gender = 'F'
-         then 'Female' ;;
+         then 'Female'
+         else 'other'
+    end
+    ;;
   }
 
   dimension: geographic_staff_state_id {
