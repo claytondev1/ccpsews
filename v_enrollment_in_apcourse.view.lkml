@@ -58,10 +58,17 @@ dimension: school_id {
     sql: ${TABLE}.teacherDisplay ;;
   }
 
+  measure: student_courses {
+    type: count_distinct
+    sql: ${student_number} ;;
+    label: "Total Enrollment"
+    drill_fields: [school.name , count ]
+  }
   measure: count {
     type: count_distinct
     sql: ${student_number} ;;
-    label: "Total Students"
-    drill_fields: [school.name, count]
+    drill_fields: [lastname,firstname,course_name]
+
   }
+
 }
