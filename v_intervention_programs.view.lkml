@@ -1,6 +1,8 @@
 view: v_intervention_programs {
   sql_table_name: dbo.vInterventionPrograms ;;
 
+
+
   dimension: first_name {
     type: string
     sql: ${TABLE}.firstName ;;
