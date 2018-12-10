@@ -70,7 +70,7 @@ view: v_dual_enrollment {
  measure: count {
    type: count_distinct
    sql: ${student_number} ;;
-   drill_fields: [lastname,firstname,course_name]
+   drill_fields: [lastname,firstname]
    }
 
 
