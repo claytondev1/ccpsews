@@ -501,4 +501,16 @@ view: enrollment {
   set: enrollment_count {
    fields: [school.name , enrollment.count]
   }
+
+  measure: total_gifted_talented {
+    type: sum
+    sql: ${gifted_talented}_days} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: total_special_ed_status {
+    type: sum
+    sql: ${special_ed_status}_days} ;;
+    value_format_name: decimal_0
+  }
 }
