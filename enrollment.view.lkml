@@ -495,22 +495,29 @@ view: enrollment {
 
   measure: count {
     type: count
-    drill_fields: [enrollment_count*]
+
     }
 
-  set: enrollment_count {
-   fields: [school.name , enrollment.count]
+  measure: TotalEnrollment {
+    type: count
+    drill_fields: [school_count*]
   }
 
-  measure: total_gifted_talented {
+  measure: sum_gifted_talented {
     type: sum
-    sql: ${gifted_talented}_days} ;;
+    sql: ${gifted_talented};;
     value_format_name: decimal_0
   }
 
   measure: total_special_ed_status {
     type: sum
-    sql: ${special_ed_status}_days} ;;
+    sql: ${special_ed_status} ;;
     value_format_name: decimal_0
   }
+
+
+  set: school_count {
+    fields: [school.name , count]
+  }
+
 }
