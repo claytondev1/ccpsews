@@ -76,14 +76,14 @@ view: attendance_detail {
       field: is_excused
       value: "no"
     }
-    drill_fields: [student_detail*]
+   # drill_fields: [student_detail*]
   }
 
   measure: total_absent_days {
     type: sum
     sql: ${absent_days} ;;
     value_format_name: decimal_0
-    drill_fields: [student_detail*]
+   # drill_fields: [student_detail*]
   }
 
   measure: avg_absent_days_per_student {
@@ -91,7 +91,7 @@ view: attendance_detail {
     type: number
     sql: 1.0 * ${total_absent_days} / NULLIF(${individual.count},0) ;;
     value_format_name: decimal_0
-    drill_fields: [student_detail*]
+   # drill_fields: [student_detail*]
   }
 
 #  dimension: is_at_risk {
