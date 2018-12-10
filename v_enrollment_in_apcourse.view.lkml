@@ -67,7 +67,7 @@ dimension: school_id {
   measure: count {
     type: count_distinct
     sql: ${student_number} ;;
-    drill_fields: [lastname,firstname,course_name]
+    drill_fields: [lastname,firstname]
 
   }
 
