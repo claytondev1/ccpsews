@@ -495,6 +495,10 @@ view: enrollment {
 
   measure: count {
     type: count
-    drill_fields: [school.name , enrollment.count]
+    drill_fields: [enrollment_count*]
+    }
+
+  set: enrollment_count {
+   fields: [school.name , enrollment.count]
   }
 }
