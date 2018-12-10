@@ -1,4 +1,4 @@
-connection: "edficcps"
+connection: "bisqldb"
 
 #include: "*.view.lkml"         # include all views in this project
 #include: "*.dashboard.lookml"  # include all dashboards in this project
@@ -257,7 +257,11 @@ AND ((enrollment.endStatus IS NULL) OR (enrollment.endStatus IS NULL OR LEN(enro
 AND (((enrollment.noShow IS NULL OR LEN(enrollment.noShow ) = 0 ) OR enrollment.noShow = 'false'))
 AND (enrollment.stateExclude = 'false')
 
-AND calendar.endyear = 2019 ;;
+AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                  then year(getdate()) + 1
+                else
+                year(getdate())
+                end   ;;
 
     join: calendar {
     type: left_outer
@@ -293,6 +297,9 @@ AND calendar.endyear = 2019 ;;
   }
 
 }
+
+
+
 
 explore: individual {
   label: "Student information"
@@ -460,8 +467,45 @@ explore: school {
 
 explore: v_dual_enrollment {
   label: "Student Dual Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
+    relationship: one_to_one
+  }
+
 }
 
+explore: v_enrollment_in_apcourse {
+  label: "Enrollment By AP Course "
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
+    relationship: one_to_one
+  }
+}
+
+explore: v_gifted_eligibility {
+
+  label: "Enrollment By Gifted Student"
+
+join: school {
+  type: inner
+  sql_on: ${school.school_id} = ${v_gifted_eligibility.school_id}  ;;
+  relationship: one_to_one
+  }
+}
+
+explore: v_intervention_programs {
+
+  label: "Enrollment By Intervention Programs"
+
+  join: school {
+    type: inner
+    sql_on: ${school.school_id} = ${v_intervention_programs.school_id}  ;;
+    relationship: one_to_one
+  }
+}
 
 
 explore: employeesbycerttype {

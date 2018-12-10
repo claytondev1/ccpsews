@@ -55,7 +55,12 @@ view: individual {
 
   dimension: gender {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: case when ${TABLE}.gender = 'M'
+         then 'Male'
+         when ${TABLE}.gender = 'F'
+         then 'Female'
+    end
+    ;;
   }
 
   dimension: geographic_staff_state_id {

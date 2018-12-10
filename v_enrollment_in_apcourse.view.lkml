@@ -1,14 +1,8 @@
-view: v_dual_enrollment {
-  sql_table_name: dbo.vDualEnrollment ;;
-
-  dimension: calendar_name {
-    type: string
-    sql: ${TABLE}.CalendarName ;;
-  }
+view: v_enrollment_in_apcourse {
+  sql_table_name: dbo.vEnrollmentInAPCourse ;;
 
   dimension: course_name {
     type: string
-    label: "Course Name"
     sql: ${TABLE}.CourseName ;;
   }
 
@@ -17,14 +11,19 @@ view: v_dual_enrollment {
     sql: ${TABLE}.CourseNumber ;;
   }
 
+dimension: school_id {
+  type: string
+  sql: ${TABLE}.SchoolID ;;
+
+}
   dimension: enrollment_id {
     type: number
     sql: ${TABLE}.enrollmentID ;;
   }
 
   dimension: firstname {
-    label: "First Name"
     type: string
+    label: "First Name"
     sql: ${TABLE}.firstname ;;
   }
 
@@ -34,9 +33,14 @@ view: v_dual_enrollment {
   }
 
   dimension: lastname {
-    label: "Last Name"
     type: string
+    label: "Last Name"
     sql: ${TABLE}.lastname ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: ${TABLE}.name ;;
   }
 
   dimension: person_id {
@@ -54,25 +58,17 @@ view: v_dual_enrollment {
     sql: ${TABLE}.teacherDisplay ;;
   }
 
-  dimension: school_id {
-    type: string
-    sql: ${TABLE}.SchoolID ;;
-
-  }
-
   measure: student_courses {
     type: count_distinct
     sql: ${student_number} ;;
     label: "Total Enrollment"
-    drill_fields: [school.name , v_dual_enrollment.count ]
+    drill_fields: [school.name , count ]
   }
+  measure: count {
+    type: count_distinct
+    sql: ${student_number} ;;
+    drill_fields: [lastname,firstname,course_name]
 
- measure: count {
-   type: count_distinct
-   sql: ${student_number} ;;
-   drill_fields: [lastname,firstname]
-   }
-
-
+  }
 
 }
