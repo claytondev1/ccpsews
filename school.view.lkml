@@ -150,6 +150,7 @@ view: school {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+    label: "School Name"
   }
 
   dimension: nces_school_id {
