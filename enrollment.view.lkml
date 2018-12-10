@@ -503,6 +503,10 @@ view: enrollment {
     drill_fields: [school_count*]
   }
 
+  set: school_count {
+    fields: [school.name , count]
+  }
+
   measure: sum_gifted_talented {
     type: sum
     sql: ${gifted_talented};;
@@ -513,11 +517,6 @@ view: enrollment {
     type: sum
     sql: ${special_ed_status} ;;
     value_format_name: decimal_0
-  }
-
-
-  set: school_count {
-    fields: [school.name , count]
   }
 
 }
