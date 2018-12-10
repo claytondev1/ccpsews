@@ -76,7 +76,7 @@ view: attendance_detail {
       field: is_excused
       value: "no"
     }
-    drill_fields: [student_detail*]
+   # drill_fields: [student_detail*]
   }
 
   measure: total_absent_days {
