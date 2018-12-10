@@ -309,7 +309,7 @@ view: school {
     type: zipcode
     sql: ${TABLE}.zip ;;
     map_layer_name: us_zipcode_tabulation_areas
-    drill_fields: [name]
+   # drill_fields: [name]
   }
 
   measure: count {
