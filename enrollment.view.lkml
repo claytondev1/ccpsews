@@ -507,6 +507,27 @@ view: enrollment {
     fields: [school.name , count]
   }
 
+  measure: TotalSpecialED{
+    type: count
+
+    value_format_name: id
+    filters: {
+      field: special_ed_status
+      value: "Y"
+    }
+    drill_fields: [school_count*]
+  }
+
+  measure: TotalGifted{
+    type: count
+
+    value_format_name: id
+    filters: {
+      field: gifted_talented
+      value: "1"
+    }
+    drill_fields: [school_count*]
+  }
 
 
 }
