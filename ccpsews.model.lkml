@@ -56,6 +56,12 @@ explore: attendance_detail {
     sql_on:right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
     relationship: many_to_one
   }
+  join: location {
+
+    type: inner
+    sql_on: ('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
+    relationship: one_to_one
+  }
 }
 
 
