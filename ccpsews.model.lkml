@@ -59,7 +59,7 @@ explore: attendance_detail {
   join: location {
 
     type: inner
-    sql_on: ('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
+    sql_on: right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
     relationship: one_to_one
   }
 }
