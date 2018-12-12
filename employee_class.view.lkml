@@ -87,7 +87,9 @@ dimension:  pk {
               then 'Induction Pathway 2'
               when  ${TABLE}."Pay_Cert_Type" = 'PRL'
               then 'Performance Based Professional Leadership'
-              ;;
+              else 'other'
+        end
+        ;;
   }
 
   dimension: pay_cert_lvl {
