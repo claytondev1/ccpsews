@@ -43,52 +43,9 @@ dimension:  pk {
 
   dimension: pay_cert_Type{
     type: string
-    sql: case when  ${TABLE}."Pay Cert Type" = 'SRT'
-              then 'Standard Professional Teaching'
-              when  ${TABLE}."Pay Cert Type" = 'R'
-              then 'Paraprofessional'
-              when  ${TABLE}."Pay Cert Type" = 'IN4T'
-              then 'Induction Pathway 4'
-              when  ${TABLE}."Pay Cert Type" = 'SRS'
-              then 'Standard Professional Service'
-              when  ${TABLE}."Pay Cert Type" = 'IN1T'
-              then 'Induction Pathway 1'
-              when  ${TABLE}."Pay Cert Type" = 'PRT'
-              then 'Performance Based Professional Teaching'
-              when  ${TABLE}."Pay Cert Type" = 'SRL'
-              then 'Standard Paraprofessional Leadership'
-              when  ${TABLE}."Pay Cert Type" = 'IN3T'
-              then 'Induction Pathway 3'
-              when  ${TABLE}."Pay Cert Type" = 'WT'
-              then 'Waiver'
-              when  ${TABLE}."Pay Cert Type" = 'P'
-              then 'Provisional Permit'
-              when  ${TABLE}."Pay Cert Type" = 'XT'
-              then 'International Exchange Teacher'
-              when  ${TABLE}."Pay Cert Type" = 'SIT'
-              then 'Supplemental Induction Teaching'
-              when  ${TABLE}."Pay Cert Type" = 'NT'
-              then 'Nonrenewable Teaching (NT)'
-              when  ${TABLE}."Pay Cert Type" = 'NL'
-              then 'Nonrenewable Leadership (NL)'
-              when  ${TABLE}."Pay Cert Type" = 'NPL'
-              then 'Nonerenewable Leadership (NPL)'
-              when  ${TABLE}."Pay Cert Type" = 'NCER'
-              then 'Non-Certification'
-              when  ${TABLE}."Pay Cert Type" = 'IN4S'
-              then 'Induction Pathway 4 Services'
-              when  ${TABLE}."Pay Cert Type" = 'NTS'
-              then 'Nonrenewable Teaching (NTS)'
-              when  ${TABLE}."Pay Cert Type" = 'PBT'
-              then 'Performance Based Teaching'
-              when  ${TABLE}."Pay Cert Type" = 'T'
-              then 'Teaching Certification'
-              when  ${TABLE}."Pay Cert Type" = 'IN2T'
-              then 'Induction Pathway 2'
-              when  ${TABLE}."Pay Cert Type" = 'PRL'
-              then 'Performance Based Professional Leadership'
-        end
-        ;;
+    sql:${TABLE}."pay cert Type" ;;
+
+
   }
 
   dimension: pay_cert_lvl {

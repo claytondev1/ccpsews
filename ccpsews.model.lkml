@@ -547,6 +547,13 @@ explore: employeesbycerttype {
     relationship: one_to_one
   }
 
+ join: certificate_gadoe
+{
+
+  sql_on: ${employee_class.pay_cert_Type} = ${certificate_gadoe.cert_type} ;;
+  type: left_outer
+  relationship: many_to_one
+}
 }
 
 # explore: testaccess {
