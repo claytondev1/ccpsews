@@ -423,6 +423,11 @@ explore: vacant_positions {
   from: vacant_positions
   label: "vacant position"
 
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
   join: location {
     sql_on: ${location.location_cd} = ${vacant_positions.site} ;;
     type: inner
@@ -433,6 +438,12 @@ explore: vacant_positions {
 explore: v_vacant_positions_teacher
 {
   label: "Teacher Vacancies"
+
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
   join: location {
     sql_on: ${location.location_cd} = ${v_vacant_positions_teacher.site} ;;
     type: inner
