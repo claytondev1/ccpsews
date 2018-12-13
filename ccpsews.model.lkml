@@ -383,6 +383,12 @@ explore: individual {
 
 
 explore: activeposition {
+
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
   from: position
   label: "active position"
   sql_always_where:   ${activeposition.status} = 'A' and
