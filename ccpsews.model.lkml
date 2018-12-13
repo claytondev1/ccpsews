@@ -28,6 +28,12 @@ datagroup: cachingpolicy {
 }
 
 explore: behavior_detail {
+
+  access_filter: {
+    field: school.legacy_key_school_code
+    user_attribute: school
+  }
+
   label: "Behavior"
   description: "Use this for behavior information"
   join: individual {
@@ -44,6 +50,12 @@ explore: behavior_detail {
 
 
 explore: attendance_detail {
+
+  access_filter: {
+    field: school.legacy_key_school_code
+    user_attribute: school
+  }
+
   label: "Attendance"
   description: "Use this for attendance information"
   join: individual {
@@ -85,6 +97,12 @@ explore: course_detail {
 
 
 explore: employee {
+
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
   sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.primary_class} = 'P' and
   ${class.fiscal_year} =  'FY' +  substring
               (Cast(
@@ -253,6 +271,12 @@ explore: worker {
 }
 
 explore: enrollment {
+
+  access_filter: {
+    field: school.legacy_key_school_code
+    user_attribute: school
+  }
+
   from: enrollment
   label: "Enrollment"
   description: "Use this to see enrollment for current year"
