@@ -43,7 +43,9 @@ dimension:  pk {
 
   dimension: pay_cert_Type{
     type: string
-    sql:  ${TABLE}."Pay Cert Type" ;;
+    sql:${TABLE}."pay cert Type" ;;
+
+
   }
 
   dimension: pay_cert_lvl {

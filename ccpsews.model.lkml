@@ -1,7 +1,7 @@
 connection: "bisqldb"
 
 #include: "*.view.lkml"         # include all views in this project
-#include: "*.dashboard.lookml"  # include all dashboards in this project
+include: "*.dashboard.lookml"  # include all dashboards in this project
 
 include: "*.view"
 #include: "*.dashboard"
@@ -55,6 +55,12 @@ explore: attendance_detail {
     type: left_outer
     sql_on:right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
     relationship: many_to_one
+  }
+  join: location {
+
+    type: inner
+    sql_on: right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
+    relationship: one_to_one
   }
 }
 
@@ -541,6 +547,13 @@ explore: employeesbycerttype {
     relationship: one_to_one
   }
 
+ join: certificate_gadoe
+{
+
+  sql_on: ${employee_class.pay_cert_Type} = ${certificate_gadoe.cert_type} ;;
+  type: left_outer
+  relationship: many_to_one
+}
 }
 
 # explore: testaccess {

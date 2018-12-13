@@ -150,6 +150,7 @@ view: school {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+    label: "School Name"
   }
 
   dimension: nces_school_id {
@@ -308,7 +309,7 @@ view: school {
     type: zipcode
     sql: ${TABLE}.zip ;;
     map_layer_name: us_zipcode_tabulation_areas
-    drill_fields: [name]
+   # drill_fields: [name]
   }
 
   measure: count {
