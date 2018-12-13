@@ -30,7 +30,7 @@ datagroup: cachingpolicy {
 explore: behavior_detail {
 
   access_filter: {
-    field: school.legacy_key_school_code
+    field: school.legacy_key_number
     user_attribute: school
   }
 
@@ -52,7 +52,7 @@ explore: behavior_detail {
 explore: attendance_detail {
 
   access_filter: {
-    field: school.legacy_key_school_code
+    field: school.legacy_key_number
     user_attribute: school
   }
 
@@ -273,7 +273,7 @@ explore: worker {
 explore: enrollment {
 
   access_filter: {
-    field: school.legacy_key_school_code
+    field: school.legacy_key_number
     user_attribute: school
   }
 
