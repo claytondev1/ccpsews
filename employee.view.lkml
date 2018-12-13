@@ -104,6 +104,9 @@ view: employee {
   dimension: loc {
     type: string
     sql: ${TABLE}.Loc ;;
+
+
+
   }
 
   dimension: mname {
@@ -189,6 +192,11 @@ dimension: location_name  {
 
   type: string
   sql: ${location.location_nm} ;;
+#   link: {
+#     label: "View School Info"
+#     url: "https://looker:9999/dashboards/11?School%20Name={{ value | url_encode }}"
+#   }
+
 }
   measure: count {
 
