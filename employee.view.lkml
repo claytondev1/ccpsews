@@ -74,7 +74,6 @@ view: employee {
               when ${TABLE}.Ethnicity = 'I'
              then 'American Indian'
               else 'Other'
-             rank(${TABLE}.Ethnicity, ${TABLE}.Ethnicity)
           end
           ;;
   }
