@@ -80,6 +80,12 @@ explore: attendance_detail {
 
 
 explore: course_detail {
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
   label: "Course"
   description: "Use this for course information"
   join: individual {
@@ -179,6 +185,11 @@ join: location
 explore: teacher {
   from: employee
 
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
   sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
 
               and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class}  like '498%' or  ${position.class} = '4990' )
@@ -261,6 +272,12 @@ explore: rosters_by_high
 explore: worker {
   fields: [ALL_FIELDS*, -worker.location_name]
   from: employee
+
+  access_filter: {
+    field: employee_class.loc
+    user_attribute: school
+  }
+
   label: " Total Employees By Race"
   description: "Use this for Total Employees By Race"
   join: employee_class {
@@ -333,6 +350,11 @@ AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 
 
 explore: individual {
   label: "Student information"
+
+#   access_filter: {
+#     field:
+#     user_attribute: school
+#   }
 
   sql_always_where: ${enrollment.active} = 1 ;;
 
@@ -496,6 +518,12 @@ explore: school {
 
 
 explore: v_dual_enrollment {
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
   label: "Student Dual Enrollment"
   join: school {
     type:  inner
@@ -508,6 +536,11 @@ explore: v_dual_enrollment {
 explore: v_enrollment_in_apcourse {
   label: "Enrollment By AP Course "
 
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
   join: school {
     type:  inner
     sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
@@ -515,31 +548,37 @@ explore: v_enrollment_in_apcourse {
   }
 }
 
-explore: v_gifted_eligibility {
+# explore: v_gifted_eligibility {
+#
+#   label: "Enrollment By Gifted Student"
+#
+# join: school {
+#   type: inner
+#   sql_on: ${school.school_id} = ${v_gifted_eligibility.school_id}  ;;
+#   relationship: one_to_one
+#   }
+# }
 
-  label: "Enrollment By Gifted Student"
-
-join: school {
-  type: inner
-  sql_on: ${school.school_id} = ${v_gifted_eligibility.school_id}  ;;
-  relationship: one_to_one
-  }
-}
-
-explore: v_intervention_programs {
-
-  label: "Enrollment By Intervention Programs"
-
-  join: school {
-    type: inner
-    sql_on: ${school.school_id} = ${v_intervention_programs.school_id}  ;;
-    relationship: one_to_one
-  }
-}
+# explore: v_intervention_programs {
+#
+#   label: "Enrollment By Intervention Programs"
+#
+#   join: school {
+#     type: inner
+#     sql_on: ${school.school_id} = ${v_intervention_programs.school_id}  ;;
+#     relationship: one_to_one
+#   }
+# }
 
 
 explore: employeesbycerttype {
   from: employee
+
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
 # and ${employee_class.primary_class} = 'P'
    sql_always_where: ${employee_class.status} <> 'T'
 
