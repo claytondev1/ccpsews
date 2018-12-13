@@ -106,7 +106,7 @@ view: attendance_detail {
 
   measure: count {
     type: count
-    #drill_fields: []
+    drill_fields: [student_detail*]
   }
 
   set: student_detail {
