@@ -1,7 +1,7 @@
 connection: "bisqldb"
 
 #include: "*.view.lkml"         # include all views in this project
-include: "*.dashboard.lookml"  # include all dashboards in this project
+#include: "*.dashboard.lookml"  # include all dashboards in this project
 
 include: "*.view"
 #include: "*.dashboard"
@@ -346,6 +346,45 @@ AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 
 }
 
 
+explore: v_dual_enrollment {
+
+   access_filter: {
+
+    field: school.legacy_key_number
+    user_attribute: school
+
+  }
+
+
+  label: "Student Dual Enrollment"
+   join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
+    relationship: one_to_one
+  }
+
+}
+
+
+
+explore: v_dual_enrollment_new
+{
+  access_filter: {
+
+    field: school.legacy_key_number
+    user_attribute: school
+
+  }
+
+  label: "Student Dual Enrollment New "
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_dual_enrollment_new.school_id} ;;
+    relationship: one_to_one
+  }
+}
+
+
 
 
 explore: individual {
@@ -534,21 +573,7 @@ explore: school {
 }
 
 
-explore: v_dual_enrollment {
 
-  access_filter: {
-    field: school.legacy_key_number
-    user_attribute: school
-  }
-
-  label: "Student Dual Enrollment"
-  join: school {
-    type:  inner
-    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
-    relationship: one_to_one
-  }
-
-}
 
 explore: v_enrollment_in_apcourse {
   label: "Enrollment By AP Course "
@@ -646,6 +671,6 @@ explore: employeesbycerttype {
 # }
 
 
-explore: district_addresses  {
+#xplore: district_addresses  {}
 
-}
+#
