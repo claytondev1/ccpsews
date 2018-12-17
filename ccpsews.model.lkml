@@ -350,7 +350,7 @@ AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 
 
 
 
-explore: v_dual_enrollment_new
+explore: v_dual_enrollment
 {
   access_filter: {
 
@@ -362,7 +362,7 @@ explore: v_dual_enrollment_new
   label: "Student Dual Enrollment"
   join: school {
     type:  inner
-    sql_on: ${school.school_id} = ${v_dual_enrollment_new.school_id} ;;
+    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
     relationship: one_to_one
   }
 }

@@ -1,4 +1,4 @@
-view: v_dual_enrollment_new {
+view: v_dual_enrollment {
   sql_table_name: dbo.vDualEnrollment ;;
 
   dimension: first_name {
@@ -27,8 +27,8 @@ view: v_dual_enrollment_new {
   measure: totalenrollment{
     type: count_distinct
     sql: ${student_number} ;;
-    label: "Total Enrollment"
-    drill_fields: [school.name , v_dual_enrollment_new.count ]
+    label: "#Dual Enrollment"
+    drill_fields: [school.name , v_dual_enrollment.count ]
   }
 
   measure: count {
