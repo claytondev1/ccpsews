@@ -346,7 +346,14 @@ AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 
 }
 
 
+explore: min_max_table
+{
 
+  label: "Min Max Enrollment"
+
+
+
+}
 
 
 
