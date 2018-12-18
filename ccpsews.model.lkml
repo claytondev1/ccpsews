@@ -565,8 +565,11 @@ explore: school {
 
 
 
-explore: v_enrollment_in_apcourse {
-  label: "Enrollment By AP Course "
+
+
+explore: v_enrollment_in_apcourse
+{
+  label: "Enrollment By AP Course"
 
   access_filter: {
     field: school.legacy_key_number
@@ -578,6 +581,7 @@ explore: v_enrollment_in_apcourse {
     sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
     relationship: one_to_one
   }
+
 }
 
 # explore: v_gifted_eligibility {
