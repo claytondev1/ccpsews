@@ -566,7 +566,14 @@ explore: school {
 
 explore: v_enrollment_in_foreig_language {
   label: "Enrollment In Foreign Language"
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_foreig_language.school_id};;
+    relationship: one_to_one
   }
+}
+
 
 
 explore: v_enrollment_in_apcourse
