@@ -563,10 +563,6 @@ explore: school {
 }
 
 
-
-
-
-
 explore: v_enrollment_in_apcourse
 {
   label: "Enrollment By AP Course"
