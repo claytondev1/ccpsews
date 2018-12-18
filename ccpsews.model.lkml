@@ -377,7 +377,21 @@ explore: v_dual_enrollment
 }
 
 
+explore: v_enrollment_in_lep
+{
+  access_filter: {
 
+    field: school.legacy_key_number
+    user_attribute: school
+
+  }
+  label: "LEP Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
+    relationship: one_to_one
+  }
+}
 
 explore: individual {
   label: "Student information"
