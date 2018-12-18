@@ -562,6 +562,10 @@ explore: school {
 
 }
 
+explore: v_enrollment_in_foreig_language {
+  label: "Enrollment In Foreign Language"
+  }
+
 
 explore: v_enrollment_in_apcourse
 {
@@ -610,6 +614,7 @@ explore: employeesbycerttype {
     field: location.location_cd
     user_attribute: school
   }
+
 
 # and ${employee_class.primary_class} = 'P'
    sql_always_where: ${employee_class.status} <> 'T'
