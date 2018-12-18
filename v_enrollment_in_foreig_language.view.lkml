@@ -32,6 +32,6 @@ view: v_enrollment_in_foreig_language {
   type: count_distinct
   sql: ${studentnumber};;
   label: "Foreign Language Enrollment"
-  drill_fields: [school.name , v_enrollment_in_foreig_language.count]
+  drill_fields: [school.school_name , v_enrollment_in_foreig_language.count]
   }
 }
