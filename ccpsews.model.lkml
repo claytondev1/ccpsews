@@ -27,6 +27,8 @@ datagroup: cachingpolicy {
   sql_trigger: select getdate() ;;
 }
 
+
+
 explore: behavior_detail {
 
   access_filter: {
