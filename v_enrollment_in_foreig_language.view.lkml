@@ -25,7 +25,7 @@ view: v_enrollment_in_foreig_language {
     type: count_distinct
     sql: ${studentnumber};;
     label: "Total Enrollment"
-    drill_fields: [first_name, last_name]
+    drill_fields: [last_name,first_name]
   }
 
   measure: totalenrollment{
