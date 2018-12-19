@@ -21,6 +21,12 @@ view: v_enrollment_in_foreig_language {
     sql: ${TABLE}.studentnumber ;;
   }
 
+  measure: totalenrollment{
+    type: count_distinct
+    sql: ${studentnumber};;
+    label: "#Foreign Language"
+    drill_fields: [school.school_name, count]
+}
   measure: count {
     type: count_distinct
     sql: ${studentnumber};;
@@ -28,10 +34,6 @@ view: v_enrollment_in_foreig_language {
     drill_fields: [last_name,first_name]
   }
 
-  measure: totalenrollment{
-  type: count_distinct
-  sql: ${studentnumber};;
-  label: "#Foreign Language"
-  drill_fields: [school.school_name, count]
-  }
+
+
 }
