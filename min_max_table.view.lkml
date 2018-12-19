@@ -45,6 +45,7 @@ view: min_max_table {
     type: max
     sql: ${value} ;;
 
+
   }
 
   measure: minenrollment {
