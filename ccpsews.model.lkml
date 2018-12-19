@@ -581,6 +581,11 @@ explore: school {
 explore: v_enrollment_in_foreig_language {
   label: "Enrollment In Foreign Language"
 
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
   join: school {
     type:  inner
     sql_on: ${school.school_id} = ${v_enrollment_in_foreig_language.school_id};;
