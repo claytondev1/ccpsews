@@ -24,14 +24,14 @@ view: v_enrollment_in_foreig_language {
   measure: count {
     type: count_distinct
     sql: ${studentnumber};;
-    label: "#Foreign Language"
+    label: "Total Enrollment"
     drill_fields: [first_name, last_name]
   }
 
   measure: totalenrollment{
   type: count_distinct
   sql: ${studentnumber};;
-  label: "Total Enrollment"
+  label: "#Foreign Language"
   drill_fields: [school.school_name, v_enrollment_in_foreig_language.count]
   }
 }
