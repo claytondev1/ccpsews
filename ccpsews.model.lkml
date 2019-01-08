@@ -612,6 +612,13 @@ explore: v_enrollment_in_apcourse
 
 }
 
+explore: historical_enrollment {
+
+  label: "Hitorical Enrollment"
+
+
+}
+
 # explore: v_gifted_eligibility {
 #
 #   label: "Enrollment By Gifted Student"

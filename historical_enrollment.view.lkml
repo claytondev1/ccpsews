@@ -33,6 +33,12 @@ view: historical_enrollment {
 
   measure: count {
     type: count
-    drill_fields: [id]
+
+  }
+
+  measure: max {
+    type: number
+    sql: max(${TABLE}.value) ;;
+
   }
 }
