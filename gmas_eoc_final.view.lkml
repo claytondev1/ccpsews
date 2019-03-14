@@ -1,3 +1,5 @@
+
+
 view: gmas_eoc_final {
   sql_table_name: dbo.GMASEocFinal ;;
 

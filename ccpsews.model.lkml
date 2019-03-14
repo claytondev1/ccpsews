@@ -506,7 +506,7 @@ explore: v_vacant_positions_teacher
 
 
 ########################################
-# Explores for Dr. Tappler's Analyisis #
+# Explores for Dr. Tappler's Analysis #
 ########################################
 
 # explore: student_achievement {
@@ -530,7 +530,7 @@ label: "SAT and ACT Scores"
   join: school {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${act_data.instn_number} = ${school.legacy_key_state_school_num} ;;
+    sql_on: ${act_data.school_code} = ${school.legacy_key_state_school_num} ;;
   }
   join: district_address {
     type: inner
@@ -578,17 +578,17 @@ explore: school {
     sql_on: ${school.legacy_key_state_school_num} = ${gmas_eog_final.sch_code} ;;
   }
 
-  join: sat_data {
-    type: inner
-    sql_on: ${school.legacy_key_state_school_num} = ${sat_data.school_code};;
-    relationship: many_to_many
-  }
-
-  join: act_data {
-    type: inner
-    sql_on: ${school.legacy_key_state_school_num} = ${act_data.school_code};;
-    relationship: many_to_many
-  }
+#   join: sat_data {
+#     type: inner
+#     sql_on: ${school.legacy_key_state_school_num} = ${sat_data.school_code};;
+#     relationship: many_to_many
+#   }
+#
+#   join: act_data {
+#     type: inner
+#     sql_on: ${school.legacy_key_state_school_num} = ${act_data.school_code};;
+#     relationship: many_to_many
+#   }
 
 }
 

@@ -1,24 +1,130 @@
 view: gmas_eog_final {
-  sql_table_name: dbo.GMASEOGFinal ;;
+#   sql_table_name: dbo.GMASEOGFinal ;;
+derived_table: {
+  sql: select g.*
+        ,row_number() over (order by SchCode) as pk
+      from dbo.GMASEOGFinal g
+      ;;
+}
+
+  dimension: pk {
+    type: string
+    hidden: yes
+    primary_key: yes
+    sql: ${TABLE}.pk  ;;
+  }
+
+  parameter: achievement_level_type {
+    type: unquoted
+
+    allowed_value: {
+      label: "ELA"
+      value: "ela"
+    }
+
+    allowed_value: {
+      label: "Math"
+      value: "math"
+    }
+
+    allowed_value: {
+      label: "Science"
+      value: "sci"
+    }
+
+    allowed_value: {
+      label: "Social Studies"
+      value: "soc"
+    }
+
+  }
+
+  dimension: acheivement_level {
+    type: string
+    sql: case
+            when {% parameter achievement_level_type %} = 'ela'
+            then ${achlevel_ela}
+            when {% parameter achievement_level_type %} = 'math'
+            then ${achlevel_math}
+            when {% parameter achievement_level_type %} = 'sci'
+            then ${achlevel_sci}
+            when {% parameter achievement_level_type %} = 'soc'
+            then ${achlevel_soc}
+          else ${achlevel_ela}
+          end
+
+
+
+            ;;
+  }
+
 
   dimension: achlevel_ela {
     type: string
-    sql: ${TABLE}.ACHLevel_ELA ;;
+    sql:
+    case
+            when ${TABLE}.ACHLevel_ELA = '1'
+            then 'Beginning Learner'
+            when ${TABLE}.ACHLevel_ELA = '2'
+            then 'Developing Learner'
+            when ${TABLE}.ACHLevel_ELA = '3'
+            then 'Proficient Learner'
+            when ${TABLE}.ACHLevel_ELA = '4'
+            then 'Distinguished Learner'
+        else null
+        end ;;
   }
 
   dimension: achlevel_math {
     type: string
-    sql: ${TABLE}.ACHLevel_Math ;;
+    sql:
+        case
+            when ${TABLE}.ACHLevel_Math = '1'
+            then 'Beginning Learner'
+            when ${TABLE}.ACHLevel_Math = '2'
+            then 'Developing Learner'
+            when ${TABLE}.ACHLevel_Math = '3'
+            then 'Proficient Learner'
+            when ${TABLE}.ACHLevel_Math = '4'
+            then 'Distinguished Learner'
+        else null
+        end
+;;
   }
 
   dimension: achlevel_sci {
     type: string
-    sql: ${TABLE}.ACHLevel_Sci ;;
+    sql:
+
+    case
+            when ${TABLE}.ACHLevel_Sci = '1'
+            then 'Beginning Learner'
+            when ${TABLE}.ACHLevel_Sci = '2'
+            then 'Developing Learner'
+            when ${TABLE}.ACHLevel_Sci = '3'
+            then 'Proficient Learner'
+            when ${TABLE}.ACHLevel_Sci = '4'
+            then 'Distinguished Learner'
+        else null
+        end  ;;
   }
 
   dimension: achlevel_soc {
     type: string
-    sql: ${TABLE}.ACHLevel_Soc ;;
+    sql:
+
+    case
+            when ${TABLE}.ACHLevel_Soc = '1'
+            then 'Beginning Learner'
+            when ${TABLE}.ACHLevel_Soc = '2'
+            then 'Developing Learner'
+            when ${TABLE}.ACHLevel_Soc = '3'
+            then 'Proficient Learner'
+            when ${TABLE}.ACHLevel_Soc = '4'
+            then 'Distinguished Learner'
+        else null
+        end
+         ;;
   }
 
   dimension: cond_sem_ela {
@@ -410,6 +516,75 @@ view: gmas_eog_final {
     type: string
     sql: ${TABLE}.TestedGrade ;;
   }
+
+#######################
+# MEASURES            #
+#######################
+
+
+  measure: number_of_beginning_ela_learners {
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${pk} ;;
+    filters: {
+      field: achlevel_ela
+      value: "Beginning Learner"
+    }
+  }
+
+  measure: number_of_beginning_math_learners {
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${pk} ;;
+    filters: {
+      field: achlevel_math
+      value: "Beginning Learner"
+    }
+  }
+
+  measure: number_of_beginning_sci_learners {
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${pk} ;;
+    filters: {
+      field: achlevel_sci
+      value: "Beginning Learner"
+    }
+  }
+
+  measure: number_of_beginning_soc_learners {
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${pk} ;;
+    filters: {
+      field: achlevel_soc
+      value: "Beginning Learner"
+    }
+  }
+
+  measure: beginning_learners {
+    label: "{% parameter achievement_level_type %} learners"
+    type: number
+    value_format_name: decimal_0
+    sql:
+      {% if achievement_level_type._is_filtered %}
+          {% if achievement_level_type._parameter_value == "ela" %}
+             ${number_of_beginning_ela_learners}
+          {% elsif achievement_level_type._parameter_value == "math" %}
+            ${number_of_beginning_math_learners}
+          {% elsif achievement_level_type._parameter_value == "sci" %}
+            ${number_of_beginning_sci_learners}
+          {% elsif achievement_level_type._parameter_value == "soc" %}
+            ${number_of_beginning_soc_learners}
+          {% else %}
+            ${number_of_beginning_ela_learners}
+          {% endif %}
+      {% else %}
+          ${number_of_beginning_ela_learners}
+      {% endif %}
+          ;;
+  }
+
 
   measure: count {
     type: count

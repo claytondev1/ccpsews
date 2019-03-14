@@ -13,20 +13,20 @@ view: district_address {
     sql: ${TABLE}.City ;;
   }
 
-  dimension: f10 {
-    type: string
-    sql: ${TABLE}.F10 ;;
-  }
-
-  dimension: f11 {
-    type: string
-    sql: ${TABLE}.F11 ;;
-  }
-
-  dimension: f9 {
-    type: string
-    sql: ${TABLE}.F9 ;;
-  }
+#   dimension: f10 {
+#     type: string
+#     sql: ${TABLE}.F10 ;;
+#   }
+#
+#   dimension: f11 {
+#     type: string
+#     sql: ${TABLE}.F11 ;;
+#   }
+#
+#   dimension: f9 {
+#     type: string
+#     sql: ${TABLE}.F9 ;;
+#   }
 
   dimension: latitude {
     type: number
@@ -36,6 +36,12 @@ view: district_address {
   dimension: longitude {
     type: number
     sql: ${TABLE}.Longitude ;;
+  }
+
+  dimension: geo_location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
   }
 
   dimension: sch_code {
