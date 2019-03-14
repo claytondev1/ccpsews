@@ -530,12 +530,12 @@ label: "SAT and ACT Scores"
   join: school {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${act_data.school_code} = ${school.legacy_key_state_school_num} ;;
+    sql_on: ${act_data.instn_number} = ${school.legacy_key_state_school_num} ;;
   }
-  join: district_addresses {
+  join: district_address {
     type: inner
     relationship: many_to_many
-    sql_on: ${school.zip} = ${district_addresses.zip} ;;
+    sql_on: ${school.legacy_key_state_school_num} = ${district_address.sch_code} ;;
 
   }
 }
@@ -551,17 +551,31 @@ explore: school {
   label: "Student Achievement"
   view_label: "School"
 
-  join: district_addresses {
+  join: district_address {
     type: inner
     relationship: many_to_many
-    sql_on: ${school.zip} = ${district_addresses.zip} ;;
+    sql_on: ${school.legacy_key_state_school_num} = ${district_address.sch_code} ;;
 
   }
 
-  join: georgia_milestones_derived {
+#   join: georgia_milestones_derived {
+#     type: left_outer
+#     relationship: many_to_many
+#     sql_on: ${school.legacy_key_state_school_num} = ${georgia_milestones_derived.school_code} ;;
+#   }
+
+  join: gmas_eoc_final {
+    view_label: "GMAS EOC"
     type: left_outer
-    relationship: many_to_many
-    sql_on: ${school.legacy_key_state_school_num} = ${georgia_milestones_derived.school_code} ;;
+    relationship: one_to_many
+    sql_on: ${school.legacy_key_state_school_num} = ${gmas_eoc_final.sch_code} ;;
+  }
+
+  join: gmas_eog_final {
+    view_label: "GMAS EOG"
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${school.legacy_key_state_school_num} = ${gmas_eog_final.sch_code} ;;
   }
 
   join: sat_data {
