@@ -6,22 +6,6 @@ connection: "bisqldb"
 include: "*.view"
 #include: "*.dashboard"
 
-# # Select the views that should be a part of this model,
-# # and define the joins that connect them together.
-#
-# explore: order_items {
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
-
-###
 datagroup: cachingpolicy {
   max_cache_age: "4 hours"
   sql_trigger: select getdate() ;;
@@ -259,7 +243,7 @@ explore: rosters_by_high
 }
 
 explore: worker {
-  fields: [ALL_FIELDS*, -worker.location_name]
+#   fields: [ALL_FIELDS*, -worker.location_name]
   from: employee
 
   access_filter: {
