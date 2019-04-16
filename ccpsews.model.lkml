@@ -27,8 +27,6 @@ datagroup: cachingpolicy {
   sql_trigger: select getdate() ;;
 }
 
-
-
 explore: behavior_detail {
 
   access_filter: {
@@ -49,7 +47,6 @@ explore: behavior_detail {
     relationship: many_to_one
   }
 }
-
 
 explore: attendance_detail {
 
@@ -78,9 +75,6 @@ explore: attendance_detail {
   }
 }
 
-
-
-
 explore: course_detail {
 
   access_filter: {
@@ -101,8 +95,6 @@ explore: course_detail {
     relationship: many_to_one
   }
 }
-
-
 
 explore: employee {
 
@@ -160,29 +152,28 @@ join: location
 
 }
 
-# explore: employee_by_degree {
-#   from: employee
-#   sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
-#                     and ${employee_class.pay_cert_lvl} like 'Bachelor'
-#                     and ${employee_class.pay_cert_lvl} like 'Specialist'
-#                     and ${employee_class.pay_cert_lvl} like 'Doctorate';;
-#   join: employee_class {
-#     sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
-#     type: left_outer
-#     relationship: many_to_one
-#   }
-#   join: class {
-#     sql_on: ${employee_class.class} = ${class.class_code} ;;
-#     type: left_outer
-#     relationship: many_to_one
-#   }
-#   join: position {
-#     sql_on: ${employee_class.position} = ${position.position_nbr} ;;
-#     type: left_outer
-#     relationship: many_to_many
-#   }
-#  }
-
+explore: employee_by_degree {
+  from: employee
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
+                    and ${employee_class.pay_cert_lvl} like 'Bachelor'
+                    and ${employee_class.pay_cert_lvl} like 'Specialist'
+                    and ${employee_class.pay_cert_lvl} like 'Doctorate';;
+  join: employee_class {
+    sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+ }
 
 explore: teacher {
   from: employee
@@ -238,14 +229,10 @@ explore: teacher {
 
 }
 
-
-
-
 explore: cohort_rate {
   label: "cohort"
   description: "Use this for cohort information"
 }
-
 
 explore: esstud_countper_rosterby_teacher {
   label: "Elementary Student Count Per Roster By teacher"
@@ -347,7 +334,6 @@ AND calendar.endyear = Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 
 
 }
 
-
 explore: min_max_table
 {
 
@@ -356,8 +342,6 @@ explore: min_max_table
 
 
 }
-
-
 
 explore: v_dual_enrollment
 {
@@ -375,7 +359,6 @@ explore: v_dual_enrollment
     relationship: one_to_one
   }
 }
-
 
 explore: v_enrollment_in_lep
 {
@@ -426,7 +409,6 @@ explore: individual {
  # }
 #}
 
-
 explore: activeposition {
 
   access_filter: {
@@ -468,7 +450,6 @@ explore: activeposition {
   }
 
 }
-
 
 explore: vacant_positions {
   from: vacant_positions

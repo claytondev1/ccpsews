@@ -37,6 +37,11 @@ view: v_enrollment_in_lep {
     sql: ${TABLE}.studentNumber ;;
   }
 
+  dimension: primary_home_language {
+    type: string
+    sql: ${TABLE}.HomePrimaryLanguage ;;
+  }
+
   measure: totalenrollment{
     type: count_distinct
     sql: ${student_number} ;;
