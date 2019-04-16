@@ -6,9 +6,22 @@ view: v_enrollment_in_lep {
     sql: ${TABLE}.firstname ;;
   }
 
+  dimension: person_id {
+    type: string
+    sql: ${TABLE}.personId ;;
+  }
+
+  dimension: grade {
+    sql: ${TABLE}.grade ;;
+  }
+
   dimension: identified_date {
     type: string
     sql: ${TABLE}.identifiedDate ;;
+  }
+
+  dimension: immigrant {
+    sql: ${TABLE}.immigrant ;;
   }
 
   dimension: lastname {
@@ -53,6 +66,6 @@ view: v_enrollment_in_lep {
     type: count_distinct
     sql: ${student_number} ;;
     label: "Total Enrollment"
-    drill_fields: [lastname,firstname]
+    drill_fields: [student_number, lastname,firstname, grade]
   }
 }

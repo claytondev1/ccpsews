@@ -32,6 +32,27 @@ explore: behavior_detail {
   }
 }
 
+explore: v_enrollment_in_lep
+{
+  access_filter: {
+
+    field: school.legacy_key_number
+    user_attribute: school
+
+  }
+  label: "LEP Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
+    relationship: one_to_one
+  }
+  join: individual {
+    type: inner
+    sql_on: ${v_enrollment_in_lep.person_id}=${individual.person_id} ;;
+    relationship: one_to_one
+  }
+}
+
 explore: attendance_detail {
 
   access_filter: {
@@ -340,22 +361,6 @@ explore: v_dual_enrollment
   join: school {
     type:  inner
     sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
-    relationship: one_to_one
-  }
-}
-
-explore: v_enrollment_in_lep
-{
-  access_filter: {
-
-    field: school.legacy_key_number
-    user_attribute: school
-
-  }
-  label: "LEP Enrollment"
-  join: school {
-    type:  inner
-    sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
     relationship: one_to_one
   }
 }
