@@ -184,25 +184,7 @@ explore: individual {
   }
 }
 
-explore: v_enrollment_in_lep {
-  access_filter: {
-
-    field: school.legacy_key_number
-    user_attribute: school
-
-  }
-  label: "LEP Enrollment"
-  join: school {
-    type:  inner
-    sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
-    relationship: one_to_one
-  }
-  join: individual {
-    type: inner
-    sql_on: ${v_enrollment_in_lep.person_id}=${individual.person_id} ;;
-    relationship: one_to_one
-  }
-}
+# TAYLOR (not Dax) Deleted explore: v_enrollment_lep
 
 explore: attendance_detail {
 
