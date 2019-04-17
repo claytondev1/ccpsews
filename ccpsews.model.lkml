@@ -471,3 +471,51 @@ explore: v_vacant_positions_teacher
     relationship: one_to_many
   }
 }
+
+explore: historical_enrollment {
+  label: "Hitorical Enrollment"
+}
+
+explore: v_enrollment_in_foreig_language {
+  label: "Enrollment In Foreign Language"
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_foreig_language.school_id};;
+    relationship: one_to_one
+  }
+}
+
+
+
+explore: v_enrollment_in_apcourse {
+  label: "Enrollment By AP Course"
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
+    relationship: one_to_one
+  }
+
+}
+
+##### This was commented out #####
+# explore: v_intervention_programs {
+#
+#   label: "Enrollment By Intervention Programs"
+#
+#   join: school {
+#     type: inner
+#     sql_on: ${school.school_id} = ${v_intervention_programs.school_id}  ;;
+#     relationship: one_to_one
+#   }
+# }

@@ -5,7 +5,10 @@ Put your documentation here! Your text is rendered with [GitHub Flavored Markdow
 Click the "Edit Source" button above to make changes.
 
 
+As of 4.15.19, since co-dev with Taylor, this is the main project we will use
+
 This project contains:
+
  - all information from infinite campus.
  - employee information (original source is AS400).
  - Spencer and Michael work on assessment explores
