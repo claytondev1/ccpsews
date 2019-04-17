@@ -15,7 +15,7 @@ view: htmlf_formatting_stuff {
               Check out this dashboard to get a pulse of the business! <br />
                 <a href="https://dashboard.clayton.k12.ga.us:9999/dashboards/24"><font color='0067A6'>Board Overview Dashboard</font></a>
             {% else  %}
-              Go go Browse to get started!
+              Go to Browse to get started!
             {% endif %}
           </div>;;
   }
