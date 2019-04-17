@@ -68,6 +68,12 @@ explore: enrollment {
       relationship: many_to_many
     }
 
+    join: identity {
+      type: inner
+      sql_on: ${identity.identity_id} = ${person.current_identity_id} ;;
+      relationship: one_to_one
+    }
+
   }
 
 explore: min_max_table {
