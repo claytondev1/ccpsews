@@ -11,26 +11,6 @@ datagroup: cachingpolicy {
   sql_trigger: select getdate() ;;
 }
 ##### Start Student information ######
-explore: behavior_detail {
-
-  access_filter: {
-    field: school.legacy_key_number
-    user_attribute: school
-  }
-
-  label: "Behavior"
-  description: "Use this for behavior information"
-  join: individual {
-    type: left_outer
-    sql_on: right('0000000'+ cast( ${behavior_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
-    relationship: many_to_one
-  }
-  join: school {
-    type: left_outer
-    sql_on:right('000'+ cast( ${behavior_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: enrollment {
 
@@ -90,401 +70,429 @@ explore: enrollment {
 
   }
 
-  explore: min_max_table {
+explore: min_max_table {
 
-    label: "Min Max Enrollment"
+  label: "Min Max Enrollment"
 
 
 
-  }
+}
 
-  explore: v_dual_enrollment {
-    access_filter: {
+explore: v_dual_enrollment {
+  access_filter: {
 
-      field: school.legacy_key_number
-      user_attribute: school
-
-    }
-
-    label: "Student Dual Enrollment"
-    join: school {
-      type:  inner
-      sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
-      relationship: one_to_one
-    }
-  }
-
-  explore: historical_enrollment {
-    label: "Hitorical Enrollment"
-  }
-
-  explore: v_enrollment_in_foreig_language {
-    label: "Enrollment In Foreign Language"
-
-    access_filter: {
-      field: school.legacy_key_number
-      user_attribute: school
-    }
-
-    join: school {
-      type:  inner
-      sql_on: ${school.school_id} = ${v_enrollment_in_foreig_language.school_id};;
-      relationship: one_to_one
-    }
-  }
-
-  explore: v_enrollment_in_apcourse {
-    label: "Enrollment By AP Course"
-    access_filter: {
-      field: school.legacy_key_number
-      user_attribute: school
-    }
-
-    join: school {
-      type:  inner
-      sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
-      relationship: one_to_one
-    }
+    field: school.legacy_key_number
+    user_attribute: school
 
   }
 
-  explore: individual {
-    label: "Student information"
+  label: "Student Dual Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_dual_enrollment.school_id} ;;
+    relationship: one_to_one
+  }
+}
+
+explore: historical_enrollment {
+  label: "Hitorical Enrollment"
+}
+
+explore: v_enrollment_in_foreig_language {
+  label: "Enrollment In Foreign Language"
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_foreig_language.school_id};;
+    relationship: one_to_one
+  }
+}
+
+explore: v_enrollment_in_apcourse {
+  label: "Enrollment By AP Course"
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_apcourse.school_id};;
+    relationship: one_to_one
+  }
+
+}
+
+explore: individual {
+  label: "Student information"
 
 #   access_filter: {
 #     field:
 #     user_attribute: school
 #   }
 
-    sql_always_where: ${enrollment.active} = 1 ;;
+  sql_always_where: ${enrollment.active} = 1 ;;
 
 
 
 
 
-    join: enrollment {
+  join: enrollment {
 
-      type: left_outer
-      sql_on:  ${individual.person_id} = ${enrollment.person_id}  ;;
-      relationship: one_to_many
-    }
+    type: left_outer
+    sql_on:  ${individual.person_id} = ${enrollment.person_id}  ;;
+    relationship: one_to_many
   }
+}
 
-  explore: v_enrollment_in_lep {
-    access_filter: {
+explore: v_enrollment_in_lep {
+  access_filter: {
 
-      field: school.legacy_key_number
-      user_attribute: school
-
-    }
-    label: "LEP Enrollment"
-    join: school {
-      type:  inner
-      sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
-      relationship: one_to_one
-    }
-    join: individual {
-      type: inner
-      sql_on: ${v_enrollment_in_lep.person_id}=${individual.person_id} ;;
-      relationship: one_to_one
-    }
-  }
-
-  explore: attendance_detail {
-
-    access_filter: {
-      field: school.legacy_key_number
-      user_attribute: school
-    }
-
-    label: "Attendance"
-    description: "Use this for attendance information"
-    join: individual {
-      type: left_outer
-      sql_on: right('0000000'+ cast( ${attendance_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
-      relationship: many_to_one
-    }
-    join: school {
-      type: left_outer
-      sql_on:right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
-      relationship: many_to_one
-    }
-    join: location {
-
-      type: inner
-      sql_on: right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
-      relationship: one_to_one
-    }
-  }
-
-  explore: course_detail {
-
-    access_filter: {
-      field: school.legacy_key_number
-      user_attribute: school
-    }
-
-    label: "Course"
-    description: "Use this for course information"
-    join: individual {
-      type: left_outer
-      sql_on: right('0000000'+ cast( ${course_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
-      relationship: many_to_one
-    }
-    join: school {
-      type: left_outer
-      sql_on:right('000'+ cast( ${course_detail.school_number} as varchar ),3) = ${school.legacy_key_number} ;;
-      relationship: many_to_one
-    }
-  }
-
-  explore: cohort_rate {
-    label: "cohort"
-    description: "Use this for cohort information"
-  }
-
-  explore: esstud_countper_rosterby_teacher {
-    label: "Elementary Student Count Per Roster By teacher"
-    description: "Use this for Roster By Teacher"
-  }
-
-  explore: rosters_by_elementary_static {
-    label: "Roster by Elementary"
-    description: "Use this for roster in elementary ( class size) "
+    field: school.legacy_key_number
+    user_attribute: school
 
   }
-  explore: rosters_by_middle {
-    label: "Roster by Middle School"
-    description: "Use this for roster in Middle ( class size) "
+  label: "LEP Enrollment"
+  join: school {
+    type:  inner
+    sql_on: ${school.school_id} = ${v_enrollment_in_lep.schoolid} ;;
+    relationship: one_to_one
   }
-  explore: rosters_by_high  {
-    label: "Roster by High School"
-    description: "Use this for roster in High ( class size) "
+  join: individual {
+    type: inner
+    sql_on: ${v_enrollment_in_lep.person_id}=${individual.person_id} ;;
+    relationship: one_to_one
+  }
+}
+
+explore: attendance_detail {
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
   }
 
+  label: "Attendance"
+  description: "Use this for attendance information"
+  join: individual {
+    type: left_outer
+    sql_on: right('0000000'+ cast( ${attendance_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
+    relationship: many_to_one
+  }
+  join: school {
+    type: left_outer
+    sql_on:right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
+    relationship: many_to_one
+  }
+  join: location {
+
+    type: inner
+    sql_on: right('000'+ cast( ${attendance_detail.school_code} as varchar ),3) = ${location.location_cd}  ;;
+    relationship: one_to_one
+  }
+}
+
+explore: course_detail {
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  label: "Course"
+  description: "Use this for course information"
+  join: individual {
+    type: left_outer
+    sql_on: right('0000000'+ cast( ${course_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
+    relationship: many_to_one
+  }
+  join: school {
+    type: left_outer
+    sql_on:right('000'+ cast( ${course_detail.school_number} as varchar ),3) = ${school.legacy_key_number} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: cohort_rate {
+  label: "cohort"
+  description: "Use this for cohort information"
+}
+
+explore: esstud_countper_rosterby_teacher {
+  label: "Elementary Student Count Per Roster By teacher"
+  description: "Use this for Roster By Teacher"
+}
+
+explore: rosters_by_elementary_static {
+  label: "Roster by Elementary"
+  description: "Use this for roster in elementary ( class size) "
+
+}
+
+explore: rosters_by_middle {
+  label: "Roster by Middle School"
+  description: "Use this for roster in Middle ( class size) "
+}
+
+explore: rosters_by_high  {
+  label: "Roster by High School"
+  description: "Use this for roster in High ( class size) "
+}
+
+explore: behavior_detail {
+
+  access_filter: {
+    field: school.legacy_key_number
+    user_attribute: school
+  }
+
+  label: "Behavior"
+  description: "Use this for behavior information"
+  join: individual {
+    type: left_outer
+    sql_on: right('0000000'+ cast( ${behavior_detail.student_number} as varchar ),7) = ${individual.student_number} ;;
+    relationship: many_to_one
+  }
+  join: school {
+    type: left_outer
+    sql_on:right('000'+ cast( ${behavior_detail.school_code} as varchar ),3) = ${school.legacy_key_number} ;;
+    relationship: many_to_one
+  }
+}
 
 ##### End Student information ######
 
 ##### Start Employee information ######
 
-  explore: employee {
+explore: employee {
 
-    access_filter: {
-      field: location.location_cd
-      user_attribute: school
-    }
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
 
-    sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.primary_class} = 'P' and
-      ${class.fiscal_year} =  'FY' +  substring
-                  (Cast(
-                     (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
-                      then year(getdate()) + 1
-                    else
-                    year(getdate())
-                    end )
-                         as varchar
-                    )
-                    , 3, 2 )
-      ;;
-    #always_filter: {
-     # filters: {
-      #  field: employee_class.status
-      #  value: "A,N,P"
-       # }
-      #filters: {
-      #  field: employee_class.primary_class
-      #  value: "P"
-      #}
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.primary_class} = 'P' and
+    ${class.fiscal_year} =  'FY' +  substring
+                (Cast(
+                   (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                    then year(getdate()) + 1
+                  else
+                  year(getdate())
+                  end )
+                       as varchar
+                  )
+                  , 3, 2 )
+    ;;
+  #always_filter: {
+   # filters: {
+    #  field: employee_class.status
+    #  value: "A,N,P"
+     # }
+    #filters: {
+    #  field: employee_class.primary_class
+    #  value: "P"
     #}
-      join: employee_class {
-        sql_on: ${employee.emp} = ${employee_class.emp} ;;
-        type: left_outer
-        relationship: many_to_one
-      }
-      join: class {
-        sql_on: ${employee_class.class} = ${class.class_code} ;;
-        type: left_outer
-        relationship: many_to_one
-      }
-      join: position {
-        sql_on: ${employee_class.position} = ${position.position_nbr} ;;
-        type: left_outer
-        relationship: many_to_many
-      }
-
-
-
-      join: location
-      {
-        sql_on: ${employee.loc} = ${location.location_cd} ;;
-        type: inner
-        relationship: one_to_one
-      }
-
+  #}
+    join: employee_class {
+      sql_on: ${employee.emp} = ${employee_class.emp} ;;
+      type: left_outer
+      relationship: many_to_one
     }
-    explore: employee_by_degree {
-      from: employee
-      sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
-                    and ${employee_class.pay_cert_lvl} like 'Bachelor'
-                    and ${employee_class.pay_cert_lvl} like 'Specialist'
-                    and ${employee_class.pay_cert_lvl} like 'Doctorate';;
-      join: employee_class {
-        sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
-        type: left_outer
-        relationship: many_to_one
-      }
-      join: class {
-        sql_on: ${employee_class.class} = ${class.class_code} ;;
-        type: left_outer
-        relationship: many_to_one
-      }
-      join: position {
-        sql_on: ${employee_class.position} = ${position.position_nbr} ;;
-        type: left_outer
-        relationship: many_to_many
-      }
+    join: class {
+      sql_on: ${employee_class.class} = ${class.class_code} ;;
+      type: left_outer
+      relationship: many_to_one
     }
-    explore: teacher {
-      from: employee
-
-      access_filter: {
-        field: location.location_cd
-        user_attribute: school
-      }
-
-      sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
-
-                            and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class}  like '498%' or  ${position.class} = '4990' )
-                          and (${class.class_code} like '50%' or ${class.class_code} like '498%' or ${class.class_code} ='4990')
-                           ;;
-
-               # always_filter: {
-                #  filters: {
-                 #   field: employee_class.status
-                #    value: "A,N,P"
-                #  }
-                #  filters: {
-                #    field: employee_class.primary_class
-                #    value: "P"
-                #  }
+    join: position {
+      sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+      type: left_outer
+      relationship: many_to_many
+    }
 
 
-              #  }
-        join: employee_class {
-          sql_on: ${teacher.emp} = ${employee_class.emp} ;;
 
-          type: left_outer
-          relationship: many_to_one
-        }
-        join: class {
-          sql_on: ${employee_class.class} = ${class.class_code} ;;
-          type: left_outer
-          relationship: many_to_one
-        }
-        join: position {
+    join: location
+    {
+      sql_on: ${employee.loc} = ${location.location_cd} ;;
+      type: inner
+      relationship: one_to_one
+    }
 
-          sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+  }
 
-          type: left_outer
-          relationship: many_to_many
-        }
+explore: employee_by_degree {
+  from: employee
+  sql_always_where: ${employee_class.status} <> 'T' and ${employee_class.pay_cert_lvl} like 'Master'
+                and ${employee_class.pay_cert_lvl} like 'Bachelor'
+                and ${employee_class.pay_cert_lvl} like 'Specialist'
+                and ${employee_class.pay_cert_lvl} like 'Doctorate';;
+  join: employee_class {
+    sql_on: ${employee_by_degree.emp} = ${employee_class.emp} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: class {
+    sql_on: ${employee_class.class} = ${class.class_code} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: position {
+    sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+    type: left_outer
+    relationship: many_to_many
+  }
+}
 
-        join: location
-        {
-          sql_on: ${teacher.loc} = ${location.location_cd} ;;
-          type: inner
-          relationship: one_to_one
-        }
+explore: teacher {
+  from: employee
 
-      }
-      explore: worker {
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
+  sql_always_where: ${position.class} not like 'M%' and  ${position.class} not like 'H%' and  ${position.class} not like 'E%'
+
+                        and ${employee_class.status} <> 'T' and  ( ${position.class}  like '50%' or  ${position.class}  like '498%' or  ${position.class} = '4990' )
+                      and (${class.class_code} like '50%' or ${class.class_code} like '498%' or ${class.class_code} ='4990')
+                       ;;
+
+           # always_filter: {
+            #  filters: {
+             #   field: employee_class.status
+            #    value: "A,N,P"
+            #  }
+            #  filters: {
+            #    field: employee_class.primary_class
+            #    value: "P"
+            #  }
+
+
+          #  }
+    join: employee_class {
+      sql_on: ${teacher.emp} = ${employee_class.emp} ;;
+
+      type: left_outer
+      relationship: many_to_one
+    }
+    join: class {
+      sql_on: ${employee_class.class} = ${class.class_code} ;;
+      type: left_outer
+      relationship: many_to_one
+    }
+    join: position {
+
+      sql_on: ${employee_class.position} = ${position.position_nbr} ;;
+
+      type: left_outer
+      relationship: many_to_many
+    }
+
+    join: location
+    {
+      sql_on: ${teacher.loc} = ${location.location_cd} ;;
+      type: inner
+      relationship: one_to_one
+    }
+
+  }
+
+explore: worker {
 #   fields: [ALL_FIELDS*, -worker.location_name]
-      from: employee
+from: employee
 
-      access_filter: {
-        field: employee_class.loc
-        user_attribute: school
-      }
+access_filter: {
+  field: employee_class.loc
+  user_attribute: school
+}
 
-      label: " Total Employees By Race"
-      description: "Use this for Total Employees By Race"
-      join: employee_class {
-        type: left_outer
-        sql_on: ${worker.emp} = ${employee_class.emp};;
-        relationship: many_to_one
-      }
+label: " Total Employees By Race"
+description: "Use this for Total Employees By Race"
+join: employee_class {
+  type: left_outer
+  sql_on: ${worker.emp} = ${employee_class.emp};;
+  relationship: many_to_one
+}
+}
+
+explore: activeposition {
+
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
+
+  from: position
+  label: "active position"
+  sql_always_where:   ${activeposition.status} = 'A' and
+
+
+          ${class.fiscal_year} =  'FY' +  substring
+                      (Cast(
+                         (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
+                          then year(getdate()) + 1
+                        else
+                        year(getdate())
+                        end )
+                             as varchar
+                        )
+                        , 3, 2 ) and
+
+          ${activeposition.class} not like 'M%' and  ${activeposition.class} not like 'H%' and  ${activeposition.class} not like 'E%'
+
+          ;;
+
+    join: class {
+      sql_on: ${activeposition.class} = ${class.class_code} ;;
+      type: left_outer
+      relationship: many_to_one
     }
-    explore: activeposition {
 
-      access_filter: {
-        field: location.location_cd
-        user_attribute: school
-      }
+    join: location
+    {
+      sql_on: ${activeposition.site} = ${location.location_cd} ;;
+      type: inner
+      relationship: one_to_one
+    }
 
-      from: position
-      label: "active position"
-      sql_always_where:   ${activeposition.status} = 'A' and
+  }
 
+explore: vacant_positions {
+  from: vacant_positions
+  label: "vacant position"
 
-              ${class.fiscal_year} =  'FY' +  substring
-                          (Cast(
-                             (Case when ( MONTH(getdate()) >=7 and MONTH(getdate()) <= 12 )
-                              then year(getdate()) + 1
-                            else
-                            year(getdate())
-                            end )
-                                 as varchar
-                            )
-                            , 3, 2 ) and
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
 
-              ${activeposition.class} not like 'M%' and  ${activeposition.class} not like 'H%' and  ${activeposition.class} not like 'E%'
+  join: location {
+    sql_on: ${location.location_cd} = ${vacant_positions.site} ;;
+    type: inner
+    relationship: one_to_many
+  }
+}
 
-              ;;
+explore: v_vacant_positions_teacher{
+  label: "Teacher Vacancies"
 
-        join: class {
-          sql_on: ${activeposition.class} = ${class.class_code} ;;
-          type: left_outer
-          relationship: many_to_one
-        }
+  access_filter: {
+    field: location.location_cd
+    user_attribute: school
+  }
 
-        join: location
-        {
-          sql_on: ${activeposition.site} = ${location.location_cd} ;;
-          type: inner
-          relationship: one_to_one
-        }
+  join: location {
+    sql_on: ${location.location_cd} = ${v_vacant_positions_teacher.site} ;;
+    type: inner
+    relationship: one_to_many
+  }
+}
 
-      }
-      explore: vacant_positions {
-        from: vacant_positions
-        label: "vacant position"
-
-        access_filter: {
-          field: location.location_cd
-          user_attribute: school
-        }
-
-        join: location {
-          sql_on: ${location.location_cd} = ${vacant_positions.site} ;;
-          type: inner
-          relationship: one_to_many
-        }
-      }
-
-      explore: v_vacant_positions_teacher{
-        label: "Teacher Vacancies"
-
-        access_filter: {
-          field: location.location_cd
-          user_attribute: school
-        }
-
-        join: location {
-          sql_on: ${location.location_cd} = ${v_vacant_positions_teacher.site} ;;
-          type: inner
-          relationship: one_to_many
-        }
-      }
 ##### End Employee information ######
 
 #explore: position1 {
@@ -497,6 +505,7 @@ explore: enrollment {
 
       # }
 #}
+
 
 ##### This was commented out #####
 # explore: v_intervention_programs {

@@ -188,18 +188,16 @@ view: employee {
 
   }
 
-dimension: location_name  {
-
-  type: string
-  sql: ${location.location_nm} ;;
-#   link: {
-#     label: "View School Info"
-#     url: "https://looker:9999/dashboards/11?School%20Name={{ value | url_encode }}"
-#   }
-
-}
+# THIS IS CAUSING LOOKML ERROR - to fix, make sure that all explores that query Employee table also include a join to location table
+# dimension: location_name  {
+#   type: string
+#   sql: ${location.location_nm} ;;
+# #   link: {
+# #     label: "View School Info"
+# #     url: "https://looker:9999/dashboards/11?School%20Name={{ value | url_encode }}"
+# #   }
+# }
   measure: count {
-
 
     type: count_distinct
     sql: ${emp} ;;
@@ -220,6 +218,6 @@ dimension: location_name  {
   }
 
   set: site_count {
-    fields: [ location_name , count]
+    fields: [ count]
     }
 }
