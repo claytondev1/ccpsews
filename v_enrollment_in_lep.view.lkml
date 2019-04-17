@@ -47,6 +47,7 @@ view: v_enrollment_in_lep {
     sql: ${student_number} ;;
     label: "#LEP Enrollment"
     drill_fields: [school.name , v_enrollment_in_lep.count ]
+    description: "LEP By School(ESOL)"
   }
 
   measure: count {
@@ -54,5 +55,6 @@ view: v_enrollment_in_lep {
     sql: ${student_number} ;;
     label: "Total Enrollment"
     drill_fields: [lastname,firstname]
+    description: "LEP Students (ESOL)"
   }
 }
