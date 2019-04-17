@@ -1,6 +1,4 @@
-explore: htmlf_formatting_stuff {
-
-}
+explore: htmlf_formatting_stuff {}
 view: htmlf_formatting_stuff {
   sql_table_name: dbo.school ;;
   measure: html {
