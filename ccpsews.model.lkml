@@ -33,7 +33,8 @@ explore: enrollment {
                       then year(getdate()) + 1
                     else
                     year(getdate())
-                    end   ;;
+                    end
+                    ;;
 
     join: calendar {
       type: left_outer
@@ -72,6 +73,33 @@ explore: enrollment {
       type: inner
       sql_on: ${identity.identity_id} = ${person.current_identity_id} ;;
       relationship: one_to_one
+    }
+
+    join: lep { #might need additional logic in join - see query: https://dashboard.clayton.k12.ga.us:9999/sql/s67wbxgzzxps85
+      view_label: "LEP"
+      type: left_outer
+      sql_on: ${lep.person_id}=${person.person_id}
+        and ${lep.program_status} = 'LEP'
+        and ${lep.exit_date} is null
+        ;;
+      relationship: one_to_one
+    }
+    join: lepservice {
+      view_label: "LEP"
+      fields: [lepservice.start_date]
+      sql_on: ${lepservice.person_id}=${person_id}
+      and ${lepservice.start_date} =
+          (select max(leps2.startDate) from lepService leps2 where leps2.personID = ${lepservice.person_id})
+      and ${lepservice.start_date} is not null
+  ;;
+      relationship: one_to_one
+    }
+    join: lepservice_type {
+      view_label: "LEP"
+      fields: [] #This brings in NO fields to explore
+      sql_on: ${lepservice.lep_service_type_id}=${lepservice_type.lep_service_type_id}
+      and ${lepservice_type.code} not like 'NonESOL%';;
+      relationship: one_to_many
     }
 
   }
