@@ -14,7 +14,7 @@ view: htmlf_formatting_stuff {
               <a href="https://dashboard.clayton.k12.ga.us:9999/dashboards/25"><font color='0067A6'>SPLOST Overview Dashboard</font></a>
               Check out this dashboard to get a pulse of the business! <br />
                 <a href="https://dashboard.clayton.k12.ga.us:9999/dashboards/24"><font color='0067A6'>Board Overview Dashboard</font></a>
-            {% elsif  %}
+            {% else  %}
               Go go Browse to get started!
             {% endif %}
           </div>;;
