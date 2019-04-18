@@ -545,6 +545,17 @@ view: enrollment {
   }
 
 
+  measure: TotalSection504{
+    type: count
+
+    value_format_name: id
+    filters: {
+      field: section504
+      value: "1"
+    }
+    drill_fields: [school_count*]
+  }
+
 
 
 

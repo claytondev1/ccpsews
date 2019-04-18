@@ -15,6 +15,7 @@ view: language {
   dimension: language_name {
     type: string
     sql: ${TABLE}.LanguageName ;;
+
   }
 
   measure: count {
