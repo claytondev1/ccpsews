@@ -106,25 +106,25 @@ explore: enrollment {
       relationship: one_to_one
     }
 
-    join: section {
-      sql_on: ${section.course_id} = ${course.course_id};;
-      relationship: one_to_many
-    }
-
-    join: trial {
-
-      sql_on:  ${trial.trial_id} = ${section.trial_id} and ${trial.calendar_id} = ${calendar.calendar_id}
-      and ${trial.active} = '1' ;;
-      relationship: many_to_many
-    }
-    join: roster {
-      sql_on: ${roster.trial_id} = ${trial.trial_id}
-      and  ${roster.person_id} = ${person.person_id}
-      and ${roster.section_id} = ${section.section_id}
-      and ${roster.end_date} is null;;
-
-      relationship: many_to_many
-    }
+#     join: section {
+#       sql_on: ${section.course_id} = ${course.course_id};;
+#       relationship: one_to_many
+#     }
+#
+#     join: trial {
+#
+#       sql_on:  ${trial.trial_id} = ${section.trial_id} and ${trial.calendar_id} = ${calendar.calendar_id}
+#       and ${trial.active} = '1' ;;
+#       relationship: many_to_many
+#     }
+#     join: roster {
+#       sql_on: ${roster.trial_id} = ${trial.trial_id}
+#       and  ${roster.person_id} = ${person.person_id}
+#       and ${roster.section_id} = ${section.section_id}
+#       and ${roster.end_date} is null;;
+#
+#       relationship: many_to_many
+#     }
 
 
   }
