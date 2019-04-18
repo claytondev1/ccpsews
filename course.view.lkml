@@ -268,6 +268,10 @@ view: course {
     sql: ${TABLE}.number ;;
   }
 
+  dimension: is_dual_enrollment {
+    type: yesno
+    sql: ${number} like '%.____4%' ;;
+  }
   dimension: periods {
     type: number
     sql: ${TABLE}.periods ;;
