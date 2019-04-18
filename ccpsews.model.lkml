@@ -101,7 +101,12 @@ explore: enrollment {
       and ${lepservice_type.code} not like 'NonESOL%';;
       relationship: one_to_many
     }
+    join: enrollment_ga
+    {
+      sql_on: ${enrollment.enrollment_id} =${enrollment_ga.enrollment_id}   ;;
+      relationship: one_to_one
 
+    }
   }
 
 explore: min_max_table {
