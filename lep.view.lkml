@@ -187,6 +187,7 @@ view: lep {
       , identity.last_name
       , identity.home_primary_language
       , enrollment.grade
+      , identity.birth_country_name
     ]
   }
 }

@@ -107,6 +107,15 @@ explore: enrollment {
       relationship: one_to_one
 
     }
+    join: country {
+      sql_on: ${identity.birth_country} = ${country.country_code} ;;
+      relationship: one_to_one
+
+    }
+    join: language {
+      sql_on: ${identity.home_primary_language} = ${language.language_code} ;;
+      relationship: one_to_one
+    }
   }
 
 explore: min_max_table {
