@@ -20,22 +20,34 @@ view: v_dual_enrollment {
   }
 
   dimension: student_number {
+    primary_key: yes
     type: string
     sql: ${TABLE}.studentNumber ;;
   }
 
-  measure: totalenrollment{
+  measure: count_dual_enrollment {
+    description: "Drill to the school number"
     type: count_distinct
     sql: ${student_number} ;;
-    label: "#Dual Enrollment"
-    drill_fields: [school.name , v_dual_enrollment.count ]
+    drill_fields: [school.name , v_dual_enrollment.count_dual_enrollment_2 ]
   }
 
-  measure: count {
+  measure: count_dual_enrollment_2 {
+    hidden: yes
+    description: "Drill to the student"
     type: count_distinct
     sql: ${student_number} ;;
-    label: "Total Enrollment"
-    drill_fields: [last_name,first_name]
+    drill_fields: [drill_to_student*]
+  }
+
+  set: drill_to_student {
+    fields: [
+      v_dual_enrollment.student_number
+      , v_dual_enrollment.first_name
+      , v_dual_enrollment.last_name
+      , identity.home_primary_language
+      , enrollment.grade
+    ]
   }
 
 

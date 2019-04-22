@@ -74,8 +74,8 @@ explore: enrollment {
       sql_on: ${identity.identity_id} = ${person.current_identity_id} ;;
       relationship: one_to_one
     }
-
-    join: lep { #might need additional logic in join - see query: https://dashboard.clayton.k12.ga.us:9999/sql/s67wbxgzzxps85
+  # 4.16 Taylor: LEP join might need additional logic - see query: https://dashboard.clayton.k12.ga.us:9999/sql/s67wbxgzzxps85
+    join: lep {
       view_label: "LEP"
       type: left_outer
       sql_on: ${lep.person_id}=${person.person_id}
@@ -87,7 +87,7 @@ explore: enrollment {
     join: lepservice {
       view_label: "LEP"
       fields: [lepservice.start_date]
-      sql_on: ${lepservice.person_id}=${person_id}
+      sql_on: ${lepservice.person_id}=${enrollment.person_id}
       and ${lepservice.start_date} =
           (select max(leps2.startDate) from lepService leps2 where leps2.personID = ${lepservice.person_id})
       and ${lepservice.start_date} is not null
@@ -106,25 +106,33 @@ explore: enrollment {
       relationship: one_to_one
     }
 
-#     join: section {
-#       sql_on: ${section.course_id} = ${course.course_id};;
-#       relationship: one_to_many
-#     }
-#
-#     join: trial {
-#
-#       sql_on:  ${trial.trial_id} = ${section.trial_id} and ${trial.calendar_id} = ${calendar.calendar_id}
-#       and ${trial.active} = '1' ;;
-#       relationship: many_to_many
-#     }
-#     join: roster {
-#       sql_on: ${roster.trial_id} = ${trial.trial_id}
-#       and  ${roster.person_id} = ${person.person_id}
-#       and ${roster.section_id} = ${section.section_id}
-#       and ${roster.end_date} is null;;
-#
-#       relationship: many_to_many
-#     }
+    join: v_dual_enrollment {
+      type: left_outer
+      sql_on: ${v_dual_enrollment.student_number}=${person.student_number} ;;
+      relationship: one_to_one
+    }
+
+    # join: section {
+    #   type: inner
+    #   sql_on: ${section.course_id} = ${course.course_id};;
+    #   relationship: one_to_many
+    # }
+
+    # join: trial {
+    #   type: inner
+    #   sql_on:  ${trial.trial_id} = ${section.trial_id} and ${trial.calendar_id} = ${calendar.calendar_id}
+    #   and ${trial.active} = '1' ;;
+    #   relationship: many_to_many
+    # }
+    # join: roster {
+    #   type: inner
+    #   sql_on: ${roster.trial_id} = ${trial.trial_id}
+    #   and  ${roster.person_id} = ${person.person_id}
+    #   and ${roster.section_id} = ${section.section_id}
+    #   and ${roster.end_date} is null;;
+
+    #   relationship: many_to_many
+    # }
 
     join: country {
       sql_on: ${identity.birth_country} = ${country.country_code} ;;

@@ -124,7 +124,7 @@ view: lep {
   dimension: is_lep {
     label: "Is LEP"
     type: yesno
-    sql: ${program_status} is not null ;;
+    sql: ${program_status} = 'LEP' ;;
   }
 
   dimension: second_year_monitoring {
