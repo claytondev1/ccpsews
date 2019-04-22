@@ -75,51 +75,61 @@ view: enrollment {
   dimension: disability1 {
     type: string
     sql: ${TABLE}.disability1 ;;
+    group_label: "Disability"
   }
 
   dimension: disability10 {
     type: string
     sql: ${TABLE}.disability10 ;;
+    group_label: "Disability"
   }
 
   dimension: disability2 {
     type: string
     sql: ${TABLE}.disability2 ;;
+    group_label: "Disability"
   }
 
   dimension: disability3 {
     type: string
     sql: ${TABLE}.disability3 ;;
+    group_label: "Disability"
   }
 
   dimension: disability4 {
     type: string
     sql: ${TABLE}.disability4 ;;
+    group_label: "Disability"
   }
 
   dimension: disability5 {
     type: string
     sql: ${TABLE}.disability5 ;;
+    group_label: "Disability"
   }
 
   dimension: disability6 {
     type: string
     sql: ${TABLE}.disability6 ;;
+    group_label: "Disability"
   }
 
   dimension: disability7 {
     type: string
     sql: ${TABLE}.disability7 ;;
+    group_label: "Disability"
   }
 
   dimension: disability8 {
     type: string
     sql: ${TABLE}.disability8 ;;
+    group_label: "Disability"
   }
 
   dimension: disability9 {
     type: string
     sql: ${TABLE}.disability9 ;;
+    group_label: "Disability"
   }
 
   dimension: displaced_homemaker {
@@ -464,16 +474,19 @@ view: enrollment {
   }
 
   dimension: structure_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.structureID ;;
   }
 
   dimension: title1 {
+    hidden: yes
     type: string
     sql: ${TABLE}.title1 ;;
   }
 
   dimension: title3 {
+    hidden: yes
     type: string
     sql: ${TABLE}.title3 ;;
   }
@@ -481,9 +494,11 @@ view: enrollment {
   dimension: transportation {
     type: string
     sql: ${TABLE}.transportation ;;
+    hidden: yes
   }
 
   dimension: vocational_code {
+    hidden: yes
     type: string
     sql: ${TABLE}.vocationalCode ;;
   }
@@ -529,6 +544,17 @@ view: enrollment {
     drill_fields: [school_count*]
   }
 
+
+  measure: TotalSection504{
+    type: count
+
+    value_format_name: id
+    filters: {
+      field: section504
+      value: "1"
+    }
+    drill_fields: [school_count*]
+  }
 
 
 

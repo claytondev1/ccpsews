@@ -27,6 +27,12 @@ view: identity {
     sql: ${TABLE}.birthCountry ;;
   }
 
+  dimension: birth_country_name {
+    type: string
+    sql: ${country.country_name} ;;
+
+  }
+
   dimension: birth_county {
     type: string
     sql: ${TABLE}.birthCounty ;;
